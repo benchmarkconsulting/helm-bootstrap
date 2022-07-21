@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  namespace-bootstrap:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-21T11:51:07.175768146Z"
+    description: A Helm chart for Kubernetes
+    digest: 87b77e00110eca46c17af904130b0a260a55c1c80b4f7bb4d0123c65f1b48c99
+    name: namespace-bootstrap
+    type: application
+    urls:
+    - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/namespace-bootstrap-0.1.0/namespace-bootstrap-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-07-21T11:51:06.817086855Z"
