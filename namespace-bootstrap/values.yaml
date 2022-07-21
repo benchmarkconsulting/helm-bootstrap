@@ -1,0 +1,98 @@
+# Default values for namespace-bootstrap.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+tenant: 
+  name: "dev-team1"
+
+nameSpace:
+  annotations: {}
+  name: "app1"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+artifactorySecret:
+  create: true
+  annotations: {}
+  name: "af-secret-dockercfg"
+  secret: "eyJhdXRocyI6eyJyZWdpc3RyeS5hcXVhc2VjLmNvbSI6eyJ1c2VybmFtZSI6ImplcmVteS5jYXJzb25AYmVuY2htYXJrY29ycC5jb20iLCJwYXNzd29yZCI6IlNhbW11dDk5KmFxdWEiLCJlbWFpbCI6ImplcmVteS5jYXJzb25AYmVuY2htYXJrY29ycC5jb20iLCJhdXRoIjoiYW1WeVpXMTVMbU5oY25OdmJrQmlaVzVqYUcxaGNtdGpiM0p3TG1OdmJUcFRZVzF0ZFhRNU9TcGhjWFZoIn19fQ=="
+
+clusterAdminRole:
+  create: true
+  annotations: {}
+  name: "cluster-owner"
+  groupObjectId: "groupObjectId"
+
+clusterAuditRole:
+  create: true
+  annotations: {}
+  name: "cluster-audit"
+  groupObjectId: "groupObjectId"
+
+clusterReaderRole:
+  create: true
+  annotations: {}
+  name: "cluster-reader"
+  groupObjectId: "groupObjectId"
+
+limitRange:
+  create: true
+  annotations: {}
+  name: "cpu-limit-range"
+  default:
+    cpu: 1
+  defaultRequest:
+    cpu: 0.5
+  type: Container
+
+quotaCounts:
+  create: true
+  annotations: {}
+  name: "object-counts"
+  configmaps: "10"
+  persistentvolumeclaims: "4"
+  pods: "4"
+  replicationcontrollers: "20"
+  secrets: "10"
+  services: "10"
+
+resourceQuota:
+  create: true
+  annotations: {}
+  name: "mem-cpu"
+  requests:
+    cpu: "1"
+    memory: 1Gi
+  limits:
+    cpu: "2"
+    memory: 2Gi
+
+tenantAdminRole:
+  create: true
+  annotations: {}
+  name: "tenant-admin"
+  groupObjectId: "groupObjectId"
+
+tenantAuditRole:
+  create: true
+  annotations: {}
+  name: "tenant-audit"
+  groupObjectId: "groupObjectId"
+
+tenantDevRole:
+  create: true
+  annotations: {}
+  name: "tenant-dev"
+  groupObjectId: "groupObjectId"
+
+tenantReaderRole:
+  create: true
+  annotations: {}
+  name: "tenant-reader"
+  groupObjectId: "groupObjectId"

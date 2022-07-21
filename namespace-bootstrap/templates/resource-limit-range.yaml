@@ -1,0 +1,20 @@
+{{- if .Values.limitRange.create -}}
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: {{ .Values.limitRange.name }}
+  namespace: {{ .Values.nameSpace.name }}
+  labels:
+    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
+  {{- with .Values.limitRange.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  limits:
+  - default:
+      cpu: {{ .Values.limitRange.default.cpu }}
+    defaultRequest:
+      cpu: {{ .Values.limitRange.defaultRequest.cpu }}
+    type: {{ .Values.limitRange.type }}
+{{- end }}

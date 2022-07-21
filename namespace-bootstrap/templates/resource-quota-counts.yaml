@@ -1,0 +1,21 @@
+{{- if .Values.quotaCounts.create -}}
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.quotaCounts.name }}
+  namespace: {{ .Values.nameSpace.name }}
+  labels:
+    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
+  {{- with .Values.quotaCounts.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  hard:
+    configmaps: {{ .Values.quotaCounts.configmaps }}
+    persistentvolumeclaims: {{ .Values.quotaCounts.persistentvolumeclaims }}
+    pods: {{ .Values.quotaCounts.pods }}
+    replicationcontrollers: {{ .Values.quotaCounts.replicationcontrollers }}
+    secrets: {{ .Values.quotaCounts.secrets }}
+    services: {{ .Values.quotaCounts.services }}
+{{- end }}
