@@ -18,10 +18,10 @@ serviceAccount:
   name: ""
 
 artifactorySecret:
-  create: true
+  create: false
   annotations: {}
   name: "af-secret-dockercfg"
-  secret: "eyJhdXRocyI6eyJyZWdpc3RyeS5hcXVhc2VjLmNvbSI6eyJ1c2VybmFtZSI6ImplcmVteS5jYXJzb25AYmVuY2htYXJrY29ycC5jb20iLCJwYXNzd29yZCI6IlNhbW11dDk5KmFxdWEiLCJlbWFpbCI6ImplcmVteS5jYXJzb25AYmVuY2htYXJrY29ycC5jb20iLCJhdXRoIjoiYW1WeVpXMTVMbU5oY25OdmJrQmlaVzVqYUcxaGNtdGpiM0p3TG1OdmJUcFRZVzF0ZFhRNU9TcGhjWFZoIn19fQ=="
+  secret: ""
 
 clusterAdminRole:
   create: true
