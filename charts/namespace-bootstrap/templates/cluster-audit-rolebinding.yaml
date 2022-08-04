@@ -1,5 +1,5 @@
 {{- if .Values.clusterAuditRole.create -}}
-{{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRoleBinding" "" .Values.clusterAuditRole.name) }}
+  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRoleBinding" "" .Values.clusterAuditRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -17,5 +17,5 @@ roleRef:
 subjects:
 - kind: Group
   name: {{ .Values.tenantReaderRole.groupObjectId }}
-{{- end }}
+  {{- end }}
 {{- end }}
