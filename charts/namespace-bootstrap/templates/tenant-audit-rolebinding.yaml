@@ -3,7 +3,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ .Values.tenantAuditRole.name }}
-  namespace: {{ .Values.nameSpace.name }}
   labels:
     {{- include "namespace-bootstrap.labels" . | nindent 4 }}
   {{- with .Values.tenantAuditRole.annotations }}

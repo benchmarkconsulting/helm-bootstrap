@@ -1,8 +1,8 @@
 {{- if .Values.clusterReaderRole.create -}}
+  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.clusterReaderRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  namespace: {{ .Values.nameSpace.name }}
   name: {{ .Values.clusterReaderRole.name }}
   labels:
     {{- include "namespace-bootstrap.labels" . | nindent 4 }}
@@ -73,4 +73,5 @@ rules:
   - get
   - list 
   - watch 
+  {{- end }}
 {{- end }}
