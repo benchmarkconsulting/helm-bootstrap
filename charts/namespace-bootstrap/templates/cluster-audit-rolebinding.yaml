@@ -1,19 +1,21 @@
-{{- if .Values.clusterReaderRole.create -}}
+{{- if .Values.clusterAuditRole.create -}}
+  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRoleBinding" "" .Values.clusterAuditRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.clusterReaderRole.name }}
+  name: {{ .Values.clusterAuditRole.name }}
   labels:
     {{- include "namespace-bootstrap.labels" . | nindent 4 }}
-  {{- with .Values.clusterReaderRole.annotations }}
+  {{- with .Values.clusterAuditRole.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.clusterReaderRole.name }}
+  name: {{ .Values.clusterAuditRole.name }}
 subjects:
 - kind: Group
   name: {{ .Values.tenantReaderRole.groupObjectId }}
+  {{- end }}
 {{- end }}

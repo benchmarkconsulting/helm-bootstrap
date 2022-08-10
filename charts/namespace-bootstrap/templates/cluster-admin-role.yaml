@@ -1,12 +1,12 @@
-{{- if .Values.clusterAuditRole.create -}}
+{{- if .Values.clusterAdminRole.create -}}
+  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.clusterAdminRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  namespace: quota-demo
-  name: {{ .Values.clusterAuditRole.name }}
+  name: {{ .Values.clusterAdminRole.name }}
   labels:
     {{- include "namespace-bootstrap.labels" . | nindent 4 }}
-  {{- with .Values.clusterAuditRole.annotations }}
+  {{- with .Values.clusterAdminRole.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
@@ -72,4 +72,11 @@ rules:
   verbs:
   - get
   - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+  {{- end }}
 {{- end }}
