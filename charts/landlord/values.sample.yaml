@@ -1,6 +1,5 @@
 config:
   tenantHostPrefix: tenants.local.mikesir87.training
-
 tenants:
   team-awesome:
     flux:
