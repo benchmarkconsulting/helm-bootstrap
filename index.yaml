@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  landlord:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-10T17:10:23.362169538Z"
+    description: A Helm chart for Kubernetes
+    digest: 59f729057b40033dd3aa5fc1221784c27b86557907c0962e960a495247acee29
+    name: landlord
+    type: application
+    urls:
+    - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/landlord-0.1.0/landlord-0.1.0.tgz
+    version: 0.1.0
   namespace-bootstrap:
   - apiVersion: v2
     appVersion: 1.16.0
