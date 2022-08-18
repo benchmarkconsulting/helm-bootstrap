@@ -8,7 +8,7 @@ metadata:
   namespace: {{ $name }}
 spec:
   interval: 30m
-  url: https://github.com/mikesir87/gitopscon-eu-2022-demo
+  url: {{ $flux.url }}
   ref:
     branch: main
 ---
