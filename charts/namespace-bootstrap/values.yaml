@@ -59,7 +59,7 @@ quotaCounts:
   persistentvolumeclaims: "4"
   pods: "4"
   replicationcontrollers: "20"
-  secrets: "10"
+  secrets: "1000"
   services: "10"
 
 resourceQuota:
