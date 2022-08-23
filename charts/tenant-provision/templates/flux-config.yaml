@@ -8,7 +8,7 @@ metadata:
   namespace: {{ $name }}
 spec:
   interval: 30m
-  url: {{ default "https://github.com/benchmarkconsulting/helm-bootstrap/tree/main" $flux.path  }}
+  url: {{ default "https://github.com/benchmarkconsulting/helm-bootstrap/tree/main" $flux.repo  }}
   ref:
     branch: main
 ---

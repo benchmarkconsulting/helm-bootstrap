@@ -1,2 +1,15 @@
 tenants:
-  team-awesome:
+  team-test:
+    flux:
+      repo: https://github.com/benchmarkconsulting/manu-tenant1
+      path: ./team-tenant
+      tenantAdminRole:
+        groupObjectId: "ObjectId"
+      tenantAuditRole: 
+        groupObjectId: "ObjectId"
+      tenantDevRole:
+        groupObjectId: "ObjectId"
+      tenantReaderRole:
+        groupObjectId: "ObjectId"
+
+
