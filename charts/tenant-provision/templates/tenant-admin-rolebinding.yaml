@@ -7,9 +7,8 @@ metadata:
   name: tenant-admin-rb
   namespace: {{ $name }}
   labels:
-    {{- include "tenant-provision.labels" . | nindent 4 }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
+    platform/type: tenant
+    {{- include "tenant-provision.labels" $ | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role

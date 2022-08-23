@@ -5,9 +5,8 @@ metadata:
   name: tenant-admin
   namespace: {{ $name }}
   labels:
-    {{- include "tenant-provision.labels" . | nindent 4 }}
-  annotations:
-    {{- toYaml . | nindent 4 }}
+    platform/type: tenant
+    {{- include "tenant-provision.labels" $ | nindent 4 }}
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:

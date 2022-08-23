@@ -5,5 +5,5 @@ metadata:
   name: {{ $name }}
   labels:
     platform/type: tenant
-    {{- include "landlord.labels" $ | nindent 4 }}
+    {{- include "tenant-provision.labels" $ | nindent 4 }}
 {{- end }}

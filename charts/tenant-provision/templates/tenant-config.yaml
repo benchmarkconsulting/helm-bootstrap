@@ -1,6 +1,4 @@
 {{- range $name, $tenant := .Values.tenants }}
-{{- $tenantConfig := $tenant | default dict -}}
-{{- $flux := $tenantConfig.flux | default dict -}}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
@@ -9,8 +7,8 @@ metadata:
 spec:
   interval: 5m
   url: https://benchmarkconsulting.github.io/helm-bootstrap
-  ---
-  apiVersion: helm.toolkit.fluxcd.io/v2beta1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: {{ $name }}
@@ -29,17 +27,4 @@ spec:
   install:
     remediation:
       retries: 3
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: {{ $name }}
-  namespace: {{ $name }}
-spec:
-  interval: 10m
-  sourceRef:
-    kind: HelmRelease
-    name: {{ $name }}
- patchesStrategicMerge:
-  - values.yaml
-{{- end }} 
+{{- end }}
