@@ -1,0 +1,18 @@
+{{- range $name, $tenant := .Values.tenants }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tenant-audit-rb
+  labels:
+    {{- include "tenant-provision.labels" . | nindent 4 }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: tenant-audit
+subjects:
+- kind: Group
+  namespace: {{ $name }}
+  name: {{ .Values.tenantReaderRole.groupObjectId }}
+{{- end }}

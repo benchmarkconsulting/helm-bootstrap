@@ -1,14 +1,13 @@
-{{- if .Values.tenantAuditRole.create -}}
+{{- range $name, $tenant := .Values.tenants }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ .Values.tenantAuditRole.name }}
+  name: tenant-audit
+  namespace: {{ $name }}
   labels:
-    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
-  {{- with .Values.tenantAuditRole.annotations }}
+    {{- include "tenant-provision.labels" . | nindent 4 }}
   annotations:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:

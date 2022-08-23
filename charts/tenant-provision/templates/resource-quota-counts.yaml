@@ -1,0 +1,19 @@
+{{- range $name, $tenant := .Values.tenants }}
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-counts
+  namespace: {{ $name }}
+  labels:
+    {{- include "tenant-provision.labels" . | nindent 4 }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+spec:
+  hard:
+    configmaps: 10
+    persistentvolumeclaims: 4
+    pods: 4
+    replicationcontrollers: 20
+    secrets: 100
+    services: 100
+{{- end }}

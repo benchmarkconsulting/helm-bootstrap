@@ -1,20 +1,18 @@
-{{- if .Values.tenantReaderRole.create -}}
+{{- range $name, $tenant := .Values.tenants }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ .Values.tenantReaderRole.name }}
+  name: tenant-dev
+  namespace: {{ $name }}
   labels:
-    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
-  {{- with .Values.tenantReaderRole.annotations }}
+    {{- include "tenant-provision.labels" . | nindent 4 }}
   annotations:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
   - bindings 
   - configmaps 
-  - endpoints
   - events 
   - limitranges
   - persistentvolumeclaims
@@ -25,17 +23,13 @@ rules:
   - secrets 
   - serviceaccounts
   - services
-  - controllerrevisions
   - daemonsets
   - deployments
   - replicasets
   - statefulsets
-  - localsubjectaccessreviews
   - horizontalpodautoscalers
   - cronjobs
   - jobs
-  - leases 
-  - endpointslices
   - events
   - pods 
   - ingresses
@@ -43,8 +37,9 @@ rules:
   - poddisruptionbudgets 
   - rolebindings 
   - roles
-  - volumesnapshots 
   verbs:
   - get
   - list
+  - watch
+---
 {{- end }}

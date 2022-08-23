@@ -1,0 +1,18 @@
+{{- range $name, $tenant := .Values.tenants }}
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: {{ $name }}
+  labels:
+    {{- include "tenant-provision.labels" . | nindent 4 }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+spec:
+  limits:
+  - default:
+      cpu: 1
+    defaultRequest:
+      cpu: 0.5
+    type: Container
+{{- end }}

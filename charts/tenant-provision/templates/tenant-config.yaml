@@ -17,7 +17,7 @@ spec:
   releaseName: {{ $name }}
   chart:
     spec:
-      chart: namespace-bootstrap
+      chart: tenant-provision
       sourceRef:
         kind: HelmRepository
         name: bootstrap

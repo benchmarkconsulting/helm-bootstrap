@@ -1,0 +1,18 @@
+{{- range $name, $tenant := .Values.tenants }}
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mem-cpu
+  namespace: {{ $name }}
+  labels:
+    {{- include "tenant-provision.labels" . | nindent 4 }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+spec:
+  hard:
+    requests.cpu: 1
+    requests.memory: 1Gi
+    limits.cpu: 2
+    limits.memory: 2Gi
+{{- end }}
+

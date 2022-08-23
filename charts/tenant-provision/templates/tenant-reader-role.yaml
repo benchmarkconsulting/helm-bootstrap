@@ -1,14 +1,13 @@
-{{- if .Values.tenantAdminRole.create -}}
+{{- range $name, $tenant := .Values.tenants }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ .Values.tenantAdminRole.name }}
+  name: tenant-reader
+  namespace: {{ $name }}
   labels:
-    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
-  {{- with .Values.tenantAdminRole.annotations }}
+    {{- include "tenant-provision.labels" . | nindent 4 }}
   annotations:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
@@ -47,9 +46,5 @@ rules:
   verbs:
   - get
   - list
-  - watch
-  - create
-  - update
-  - patch
-  - delete
+---
 {{- end }}
