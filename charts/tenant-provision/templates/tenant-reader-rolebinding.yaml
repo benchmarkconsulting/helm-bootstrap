@@ -1,4 +1,6 @@
 {{- range $name, $tenant := .Values.tenants }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $flux := $tenantConfig.flux | default dict -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -14,5 +16,5 @@ roleRef:
 subjects:
 - kind: Group
   namespace:  {{ $name }}
-  name: objectid
+  name: {{ default "." $flux.tenantReaderRole.groupObjectId  }}
 {{- end }}

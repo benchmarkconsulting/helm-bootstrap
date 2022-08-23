@@ -1,4 +1,6 @@
 {{- range $name, $tenant := .Values.tenants }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $flux := $tenantConfig.flux | default dict -}}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:

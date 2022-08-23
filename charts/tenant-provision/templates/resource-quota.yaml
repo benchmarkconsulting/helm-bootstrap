@@ -1,4 +1,6 @@
 {{- range $name, $tenant := .Values.tenants }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $flux := $tenantConfig.flux | default dict -}}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
