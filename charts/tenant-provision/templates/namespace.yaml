@@ -6,5 +6,4 @@ metadata:
   labels:
     platform/type: tenant
     {{- include "landlord.labels" $ | nindent 4 }}
----
 {{- end }}

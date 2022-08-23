@@ -46,5 +46,4 @@ rules:
   verbs:
   - get
   - list
----
 {{- end }}

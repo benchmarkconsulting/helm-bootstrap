@@ -15,5 +15,4 @@ subjects:
 - kind: Group
   namespace:  {{ $name }}
   name: objectid
----
 {{- end }}
