@@ -35,7 +35,6 @@ rules:
   - nodes 
   - persistentvolumeclaims
   - persistentvolumes
-  - pods
   - podtemplates 
   - replicationcontrollers 
   - mutatingwebhookconfigurations 
