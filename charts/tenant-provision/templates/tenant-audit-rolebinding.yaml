@@ -5,6 +5,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: tenant-audit-rb
+  namespace: {{ $name }}
   labels:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
