@@ -16,6 +16,6 @@ roleRef:
   name: {{ .Values.clusterAuditRole.name }}
 subjects:
 - kind: Group
-  name: {{ .Values.tenantReaderRole.groupObjectId }}
+  name: {{ .Values.clusterAuditRole.groupObjectId }}
   {{- end }}
 {{- end }}
