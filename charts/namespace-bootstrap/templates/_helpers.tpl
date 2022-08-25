@@ -40,7 +40,6 @@ helm.sh/chart: {{ include "namespace-bootstrap.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-toolkit.fluxcd.io/tenant: {{ .Values.tenant.name }}
 {{- end }}
 
 {{/*
