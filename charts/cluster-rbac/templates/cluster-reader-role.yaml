@@ -5,7 +5,7 @@ kind: ClusterRole
 metadata:
   name: {{ .Values.clusterReaderRole.name }}
   labels:
-    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
+    {{- include "cluster-rbac.labels" . | nindent 4 }}
   {{- with .Values.clusterReaderRole.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

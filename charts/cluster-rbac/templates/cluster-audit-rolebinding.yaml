@@ -5,7 +5,7 @@ kind: ClusterRoleBinding
 metadata:
   name: {{ .Values.clusterAuditRole.name }}
   labels:
-    {{- include "namespace-bootstrap.labels" . | nindent 4 }}
+    {{- include "cluster-rbac.labels" . | nindent 4 }}
   {{- with .Values.clusterAuditRole.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
