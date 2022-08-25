@@ -11,7 +11,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 rules:
-- apiGroups: [""] # "" indicates the core API group
+- apiGroups: ["*"] # "" indicates the core API group
   resources:
   - componentstatuses
   - deployments

@@ -8,7 +8,7 @@ metadata:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 rules:
-- apiGroups: [""] # "" indicates the core API group
+- apiGroups: ["*"] # "" indicates the core API group
   resources:
   - bindings 
   - configmaps 
