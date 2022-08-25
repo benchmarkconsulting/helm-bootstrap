@@ -35,7 +35,6 @@ rules:
   - leases 
   - endpointslices
   - events
-  - pods 
   - ingresses
   - networkpolicies
   - poddisruptionbudgets 
