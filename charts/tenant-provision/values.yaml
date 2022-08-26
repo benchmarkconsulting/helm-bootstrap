@@ -12,5 +12,4 @@ tenants:
       tenantReaderRole:
         groupObjectId: "ObjectId"
       limitRange:
-        create: false
-
+        create:
