@@ -19,4 +19,5 @@ subjects:
     name: flux
     namespace: {{ $name }}
     kind: ServiceAccount
+---
 {{- end }}
