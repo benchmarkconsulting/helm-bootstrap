@@ -16,5 +16,5 @@ roleRef:
 subjects:
 - kind: Group
   namespace: {{ $name }}
-  name: {{ default "." $flux.tenantAuditRole.groupObjectId  }}
-{{- end }}
+  name: {{ default "." $flux.tenantAuditRole }}
+#{{- end }}

@@ -8,7 +8,7 @@ metadata:
   namespace: {{ $name }}
 spec:
   interval: 30m
-  url: {{ default "https://github.com/benchmarkconsulting/helm-bootstrap/tree/main" $flux.repo  }}
+  url: https://github.com/benchmarkconsulting/helm-bootstrap/tree/main
   ref:
     branch: main
 ---
@@ -19,7 +19,7 @@ metadata:
   namespace: {{ $name }}
 spec:
   interval: 1h
-  path: {{ default "./" $flux.path  }}
+  path: {{ default "./" $flux.path }}
   prune: true
   serviceAccountName: flux
   targetNamespace: {{ $name }}
@@ -27,4 +27,4 @@ spec:
     kind: GitRepository
     name: {{ $name }}
     namespace: {{ $name }}
-{{- end }}
+# {{- end }}
