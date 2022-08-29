@@ -1,8 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $flux := $tenantConfig.flux | default dict -}}
-{{- if not $flux.limitRange.enabled | default }}
-{{- end }}
+{{- if $flux.limitRange.enabled -}}
 apiVersion: v1
 kind: LimitRange
 metadata:
@@ -18,4 +17,5 @@ spec:
     defaultRequest:
       cpu: 0.5
     type: Container
+  {{- end }}
 {{- end }}
