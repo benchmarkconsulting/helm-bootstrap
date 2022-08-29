@@ -18,4 +18,5 @@ spec:
       cpu: 0.5
     type: Container
   {{- end }}
+---
 {{- end }}

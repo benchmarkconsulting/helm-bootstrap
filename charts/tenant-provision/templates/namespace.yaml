@@ -6,4 +6,5 @@ metadata:
   labels:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
+---
 {{- end }}
