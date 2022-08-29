@@ -11,5 +11,3 @@ tenants:
         groupObjectId: "ObjectId"
       tenantReaderRole:
         groupObjectId: "ObjectId"
-      limitRange:
-        enabled: false
