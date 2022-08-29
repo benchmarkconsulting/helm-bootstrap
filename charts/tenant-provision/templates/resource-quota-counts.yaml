@@ -17,4 +17,5 @@ spec:
     replicationcontrollers: 20
     secrets: 100
     services: 100
+---
 {{- end }}
