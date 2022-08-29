@@ -17,4 +17,4 @@ subjects:
 - kind: Group
   namespace:  {{ $name }}
   name: {{ default "." $flux.tenantDevRole }}
-# {{- end }}
+{{- end }}
