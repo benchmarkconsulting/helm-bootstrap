@@ -1,0 +1,51 @@
+tenants:
+  team-test1:
+    flux:
+      path: ./team-test1
+      tenantAdminRole: 
+        groupObjectId: "ObjectId"
+      tenantAuditRole: 
+        groupObjectId: "ObjectId"
+      tenantDevRole: 
+        groupObjectId: "ObjectId"
+      tenantReaderRole: 
+        groupObjectId: "ObjectId"
+      limitRange:
+        enabled: true
+      quotaCounts:
+        enabled: true
+      resourceQuota:
+        enabled: true
+  team-test2:
+    flux:
+      path: ./team-test2
+      tenantAdminRole: 
+        groupObjectId: "ObjectId"
+      tenantAuditRole: 
+        groupObjectId: "ObjectId"
+      tenantDevRole: 
+        groupObjectId: "ObjectId"
+      tenantReaderRole: 
+        groupObjectId: "ObjectId"
+      limitRange:
+        enabled: true
+        defaultCpu:
+        defaultRequestCpu:
+      quotaCounts:
+        enabled: true
+        configmaps: 150
+        persistentvolumeclaims: 150
+        pods: 150
+        secrets: 150
+        services: 150
+      resourceQuota:
+        enabled: true
+        requests: 
+          cpu: 2
+          memory: 2Gi
+        limits: 
+          cpu: 4
+          memory: 4Gi
+          
+
+      

@@ -3,7 +3,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ .Values.clusterAuditRole.name }}
+  name: {{ .Values.clusterAuditRole.name | default "cluster-audit" }}
   labels:
     {{- include "cluster-rbac.labels" . | nindent 4 }}
   {{- with .Values.clusterAuditRole.annotations }}

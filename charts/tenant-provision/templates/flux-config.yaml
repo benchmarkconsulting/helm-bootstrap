@@ -20,7 +20,7 @@ metadata:
   namespace: {{ $name }}
 spec:
   interval: 1h
-  path: {{ default "./" $flux.path }}
+  path: {{ default "./$name" $flux.path }}
   prune: true
   serviceAccountName: flux
   targetNamespace: {{ $name }}

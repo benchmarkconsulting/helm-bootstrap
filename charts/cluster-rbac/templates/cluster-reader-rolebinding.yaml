@@ -3,7 +3,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.clusterReaderRole.name }}
+  name: {{ .Values.clusterReaderRole.name | default "cluster-reader" }}
   labels:
     {{- include "cluster-rbac.labels" . | nindent 4 }}
   {{- with .Values.clusterReaderRole.annotations }}
@@ -13,7 +13,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.clusterReaderRole.name }}
+  name: {{ .Values.clusterReaderRole.name | default "cluster-reader" }}
 subjects:
 - kind: Group
   name: {{ .Values.clusterReaderRole.groupObjectId }}

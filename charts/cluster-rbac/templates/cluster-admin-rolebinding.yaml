@@ -3,7 +3,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.clusterAdminRole.name }}
+  name: {{ .Values.clusterAdminRole.name | default "cluster-owner" }}
   labels:
     {{- include "cluster-rbac.labels" . | nindent 4 }}
   {{- with .Values.clusterAdminRole.annotations }}
@@ -13,7 +13,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.clusterAdminRole.name }}
+  name: {{ .Values.clusterAdminRole.name | default "cluster-owner" }}
 subjects:
 - kind: Group
   name: {{ .Values.clusterAdminRole.groupObjectId }}
