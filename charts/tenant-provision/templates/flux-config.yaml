@@ -1,6 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $flux := $tenantConfig.flux | default dict -}}
+{{- if (($flux.fluxConfig).enabled) | default false -}}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
@@ -27,5 +28,6 @@ spec:
     kind: GitRepository
     name: {{ $name }}
     namespace: {{ $name }}
+  {{- end }}
 ---
 {{- end }}

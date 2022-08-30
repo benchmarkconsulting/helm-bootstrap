@@ -1,4 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $flux := $tenantConfig.flux | default dict -}}
+{{- if (($flux.fluxRBAC).enabled) | default true -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -18,5 +21,6 @@ subjects:
   - name: flux
     namespace: {{ $name }}
     kind: ServiceAccount
+  {{- end }}
 ---
 {{- end }}
