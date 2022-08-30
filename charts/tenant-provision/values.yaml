@@ -1,0 +1,15 @@
+tenants:
+  team-test:
+    flux:
+      path: ./team-tenant
+      tenantAdminRole: "ObjectId"
+      tenantAuditRole: "ObjectId"
+      tenantDevRole: "ObjectId"
+      tenantReaderRole: "ObjectId"
+  team-test2:
+    flux:
+      path: ./team-tenant2
+      tenantAdminRole: "ObjectId"
+      tenantAuditRole: "ObjectId"
+      tenantDevRole: "ObjectId"
+      tenantReaderRole: "ObjectId"

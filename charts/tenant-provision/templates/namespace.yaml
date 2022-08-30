@@ -1,0 +1,12 @@
+{{- range $name, $tenant := .Values.tenants }}
+{{- if not (lookup "v1" "Namespace" "" $name) }}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $name }}
+  labels:
+    platform/type: tenant
+    {{- include "tenant-provision.labels" $ | nindent 4 }}
+  {{- end }}
+---
+{{- end }}

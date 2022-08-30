@@ -1,0 +1,23 @@
+{{- range $name, $tenant := .Values.tenants }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $flux := $tenantConfig.flux | default dict -}}
+{{- if (($flux.quotaCounts).enabled) | default false -}}
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: object-counts
+  namespace: {{ $name }}
+  labels:
+    platform/type: tenant
+    {{- include "tenant-provision.labels" $ | nindent 4 }}
+spec:
+  hard:
+    configmaps: 10
+    persistentvolumeclaims: 4
+    pods: 4
+    replicationcontrollers: 20
+    secrets: 100
+    services: 100
+  {{- end }}
+---
+{{- end }}

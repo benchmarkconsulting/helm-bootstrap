@@ -1,0 +1,21 @@
+{{- if .Values.clusterAdminRole.create -}}
+  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRoleBinding" "" .Values.clusterAdminRole.name) }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Values.clusterAdminRole.name }}
+  labels:
+    {{- include "cluster-rbac.labels" . | nindent 4 }}
+  {{- with .Values.clusterAdminRole.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.clusterAdminRole.name }}
+subjects:
+- kind: Group
+  name: {{ .Values.clusterAdminRole.groupObjectId }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,155 @@
+{{- range $name, $tenant := .Values.tenants }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $flux := $tenantConfig.flux | default dict -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: tenant-admin
+  namespace: {{ $name }}
+  labels:
+    platform/type: tenant
+    {{- include "tenant-provision.labels" $ | nindent 4 }}
+rules:
+- apiGroups: ["", "apps", "admissionregistration.k8s.io", "autoscaling", "batch", "certificates.k8s.io", "config.gatekeeper.sh", "constraints.gatekeeper.sh", "helm.toolkit.fluxcd.io", "metrics.k8s.io, mutations.gatekeeper.sh", "networking.k8s.io", "notification.toolkit.fluxcd.io", "policy", "rbac.authorization.k8s.io", "source.toolkit.fluxcd.io", "spv.no", "templates.gatekeeper.sh", "storage.k8s.io" ] # "" indicates the core API group
+  resources:
+  - bindings
+  - componentstatuses
+  - configmaps
+  - endpoints
+  - events
+  - limitranges
+  - namespaces
+  - nodes
+  - persistentvolumeclaims
+  - persistentvolumes
+  - pods
+  - podtemplates
+  - replicationcontrollers
+  - resourcequotas
+  - secrets
+  - serviceaccounts
+  - services
+  - mutatingwebhookconfigurations
+  - validatingwebhookconfigurations
+  - customresourcedefinitions
+  - apiservices
+  - aplogconfs
+  - appolicies
+  - apusersigs
+  - apdoslogconfs
+  - apdospolicies
+  - dosprotectedresources
+  - controllerrevisions
+  - daemonsets
+  - deployments
+  - replicasets
+  - statefulsets
+  - tokenreviews
+  - localsubjectaccessreviews
+  - selfsubjectaccessreviews
+  - selfsubjectrulesreviews
+  - subjectaccessreviews
+  - horizontalpodautoscalers
+  - cronjobs
+  - jobs
+  - certificatesigningrequests
+  - configs
+  - k8sallowedrepos
+  - k8sblockendpointeditdefaultrole
+  - k8sblocknodeport
+  - k8sblockwildcardingress
+  - k8scontainerlimits
+  - k8scontainerratios
+  - k8scontainerrequests
+  - k8sdisallowanonymous
+  - k8sdisallowedtags
+  - k8sexternalips
+  - k8shttpsonly
+  - k8simagedigests
+  - k8spoddisruptionbudget
+  - k8spspallowedusers
+  - k8spspallowprivilegeescalationcontainer
+  - k8spspapparmor
+  - k8spspautomountserviceaccounttokenpod
+  - k8spspcapabilities
+  - k8spspflexvolumes
+  - k8spspforbiddensysctls
+  - k8spspfsgroup
+  - k8spsphostfilesystem
+  - k8spsphostnamespace
+  - k8spsphostnetworkingports
+  - k8spspprivilegedcontainer
+  - k8spspprocmount
+  - k8spspreadonlyrootfilesystem
+  - k8spspseccomp
+  - k8spspselinuxv2
+  - k8spspvolumetypes
+  - k8sreplicalimits
+  - k8srequiredannotations
+  - k8srequiredlabels
+  - k8srequiredprobes
+  - k8srequiredresources
+  - k8suniqueingresshost
+  - k8suniqueserviceselector
+  - noupdateserviceaccount
+  - leases
+  - endpointslices
+  - events
+  - providers
+  - dnsendpoints
+  - flowschemas
+  - prioritylevelconfigurations
+  - helmreleases
+  - globalconfigurations
+  - policies
+  - transportservers
+  - virtualserverroutes
+  - virtualservers
+  - kustomizations
+  - nodes
+  - pods
+  - assign
+  - assignmetadata
+  - modifyset
+  - ingressclasses
+  - ingresses
+  - networkpolicies
+  - runtimeclasses
+  - alerts
+  - providers
+  - receivers
+  - poddisruptionbudgets
+  - podsecuritypolicies
+  - clusterrolebindings
+  - clusterroles
+  - rolebindings
+  - roles
+  - priorityclasses
+  - volumesnapshotclasses
+  - volumesnapshotcontents
+  - volumesnapshots
+  - buckets
+  - gitrepositories
+  - helmcharts
+  - helmrepositories
+  - ocirepositories
+  - azurekeyvaultsecrets
+  - constraintpodstatuses
+  - constrainttemplatepodstatuses
+  - mutatorpodstatuses
+  - csidrivers
+  - csinodes
+  - csistoragecapacities
+  - storageclasses
+  - volumeattachments
+  - constrainttemplates
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+---
+{{- end }}

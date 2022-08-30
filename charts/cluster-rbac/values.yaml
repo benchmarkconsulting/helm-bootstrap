@@ -1,0 +1,17 @@
+clusterAdminRole:
+  create: true
+  annotations: {}
+  name: "cluster-owner"
+  groupObjectId: "groupObjectId"
+
+clusterAuditRole:
+  create: true
+  annotations: {}
+  name: "cluster-audit"
+  groupObjectId: "groupObjectId"
+
+clusterReaderRole:
+  create: true
+  annotations: {}
+  name: "cluster-reader"
+  groupObjectId: "groupObjectId"
