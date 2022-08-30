@@ -1,4 +1,4 @@
-{{- if .Values.clusterAuditRole.create -}}
+{{- if .Values.clusterAuditRole.enable -}}
   {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.clusterAuditRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
