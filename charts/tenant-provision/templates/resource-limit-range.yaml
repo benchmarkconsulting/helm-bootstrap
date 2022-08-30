@@ -13,9 +13,9 @@ metadata:
 spec:
   limits:
   - default:
-      cpu: 1
+      cpu: {{ $flux.limitRange.defaultCpu | default 0.5 }}
     defaultRequest:
-      cpu: 0.5
+      cpu: {{ $flux.limitRange.defaultRequestCpu | default 1 }}
     type: Container
   {{- end }}
 ---

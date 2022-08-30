@@ -12,12 +12,12 @@ metadata:
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 spec:
   hard:
-    configmaps: 10
-    persistentvolumeclaims: 4
-    pods: 4
-    replicationcontrollers: 20
-    secrets: 100
-    services: 100
+    configmaps: {{ $flux.quotaCounts.configmaps | default 100 }}
+    persistentvolumeclaims: {{ $flux.quotaCounts.persistentvolumeclaims | default 100 }}
+    pods: {{ $flux.quotaCounts.pods | default 100 }}
+    replicationcontrollers: {{ $flux.quotaCounts.replicationcontrollers | default 100 }}
+    secrets: {{ $flux.quotaCounts.secrets | default 100 }}
+    services: {{ $flux.quotaCounts.services | default 100 }}
   {{- end }}
 ---
 {{- end }}
