@@ -1,7 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $flux := $tenantConfig.flux | default dict -}}
-{{- if (($flux.limitRange).enabled) | default "" -}}
+{{- if (($flux.limitRange).enabled) | default false -}}
 apiVersion: v1
 kind: LimitRange
 metadata:

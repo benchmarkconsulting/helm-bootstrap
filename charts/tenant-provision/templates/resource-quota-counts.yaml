@@ -1,6 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $flux := $tenantConfig.flux | default dict -}}
+{{- if (($flux.quotaCounts).enabled) | default false -}}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -17,5 +18,6 @@ spec:
     replicationcontrollers: 20
     secrets: 100
     services: 100
+  {{- end }}
 ---
 {{- end }}

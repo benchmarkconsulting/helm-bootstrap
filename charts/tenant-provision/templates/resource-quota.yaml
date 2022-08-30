@@ -1,6 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $flux := $tenantConfig.flux | default dict -}}
+{{- if (($flux.resourceQuota).enabled) | default false -}}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -15,6 +16,7 @@ spec:
     requests.memory: 1Gi
     limits.cpu: 2
     limits.memory: 2Gi
+  {{- end }}
 ---
 {{- end }}
 
