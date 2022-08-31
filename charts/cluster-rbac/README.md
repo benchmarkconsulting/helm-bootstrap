@@ -14,7 +14,7 @@ This is a Helm chart for initialization and maintenance of creating RBAC for Clu
   - [Issues and feedback](#issues-and-feedback)
 
 ## Prerequisites
-
+helm or flux helm-controller
 ### Container Registry Credentials
 
 ## Installing the Charts
