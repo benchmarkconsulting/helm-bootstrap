@@ -15,8 +15,8 @@ metadata:
   namespace: {{ $name }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-owner
+  kind: Role
+  name: tenant-admin
 subjects:
   - name: flux
     namespace: {{ $name }}
