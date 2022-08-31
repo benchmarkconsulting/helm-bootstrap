@@ -40,6 +40,13 @@ rules:
   - mutatingwebhookconfigurations 
   - validatingwebhookconfigurations 
   - customresourcedefinitions
+  - apiservices
+  - aplogconfs
+  - appolicies
+  - apusersigs
+  - apdoslogconfs 
+  - apdospolicies 
+  - dosprotectedresources 
   - controllerrevisions 
   - tokenreviews
   - localsubjectaccessreviews
@@ -68,6 +75,43 @@ rules:
   - volumesnapshots
   - storageclasses 
   - volumeattachments
+  - statefulsets 
+  - configs 
+  - providers 
+  - dnsendpoints 
+  - helmreleases 
+  - globalconfigurations 
+  - policies 
+  - transportservers 
+  - virtualserverroutes 
+  - virtualservers 
+  - kustomizations 
+  - assign 
+  - assignmetadata 
+  - modifyset 
+  - alerts 
+  - providers 
+  - receivers 
+  - buckets 
+  - gitrepositories 
+  - helmcharts 
+  - helmrepositories 
+  - ocirepositories 
+  - azurekeyvaultsecrets 
+  - constraintpodstatuses 
+  - constrainttemplatepodstatuses 
+  - mutatorpodstatuses 
+  - csidrivers 
+  - csinodes 
+  - csistoragecapacities 
+  - constrainttemplates 
+  - clusterpolicies 
+  - clusterpolicyreports 
+  - clusterreportchangerequests 
+  - generaterequests 
+  - policyreports 
+  - reportchangerequests 
+  - updaterequests 
   verbs:
   - get
   - list 
