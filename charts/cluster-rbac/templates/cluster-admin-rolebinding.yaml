@@ -1,21 +1,21 @@
-{{- if .Values.clusterAdminRole.enable -}}
+{{- if ((.Values.clusterAdminRole).enable) | default true -}}
   {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRoleBinding" "" .Values.clusterAdminRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.clusterAdminRole.name | default "cluster-owner" }}
+  name: {{ ((.Values.clusterAdminRole).name) | default "cluster-owner" }}
   labels:
     {{- include "cluster-rbac.labels" . | nindent 4 }}
-  {{- with .Values.clusterAdminRole.annotations }}
+  {{- with ((.Values.clusterAdminRole).annotations) }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ .Values.clusterAdminRole.name | default "cluster-owner" }}
+  name: {{ ((.Values.clusterAdminRole).name) | default "cluster-owner" }}
 subjects:
 - kind: Group
-  name: {{ .Values.clusterAdminRole.groupObjectId }}
+  name: {{ ((.Values.clusterAdminRole).groupObjectId) | default "objectID" }}
   {{- end }}
 {{- end }}

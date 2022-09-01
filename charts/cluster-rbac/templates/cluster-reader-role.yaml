@@ -1,12 +1,12 @@
-{{- if .Values.clusterReaderRole.enable -}}
+{{- if ((.Values.clusterReaderRole).enable) | default true -}}
   {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.clusterReaderRole.name) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ .Values.clusterReaderRole.name | default "cluster-reader" }}
+  name: {{ ((.Values.clusterReaderRole).name) | default "cluster-reader" }}
   labels:
     {{- include "cluster-rbac.labels" . | nindent 4 }}
-  {{- with .Values.clusterReaderRole.annotations }}
+  {{- with ((.Values.clusterReaderRole).annotations) }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}

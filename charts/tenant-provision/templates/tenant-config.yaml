@@ -9,7 +9,7 @@ metadata:
   namespace: {{ $name }}
 spec:
   interval: 5m
-  url: https://benchmarkconsulting.github.io/helm-bootstrap
+  url: {{ $flux.tenantConfig.helmRepo }}
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease

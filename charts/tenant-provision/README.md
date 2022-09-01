@@ -12,7 +12,9 @@ This is a Helm chart for initialization and maintenance of creating a tenant.
   - [Configurable Variables](#configurable-variables)
     - [Tenant RBAC](#tenant-rbac)
     - [Tenant Secrets](#tenant-secrets)
-    - [Tenant Quotas](#tenant-quotas)
+    - [Quotas Counts](#quotas-counts)
+    - [Quotas Counts](#quotas-counts)
+    - [Flux Config](#flux-config)
   - [Issues and feedback](#issues-and-feedback)
 
 ## Prerequisites
@@ -41,22 +43,52 @@ This is a Helm chart for initialization and maintenance of creating a tenant.
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
 | `akv2k8sSecret.enabled`               | Whether to create the akv2k8sSecret.    | `false`                                                                 |
-| `name`               | Your Docker pull image secret name    | `N/A`                                                                   |
-| `username`               | Your Docker registry (DockerHub, etc.) username    | `N/A`                                                                   |
-| `password`               | Your Docker registry (DockerHub, etc.) password    | `N/A`                                                                   |
 
 
-### Tenant Quotas
+### Tenant Quotas Counts
 
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| `create`               | Set if to create new pull image secret    | `false`                                                                 |
+| `quotaCounts.enabled`               | Set if to create new pull image secret    | `false`                                                                 |
 | `name`               | Your Docker pull image secret name    | `N/A`                                                                   |
 | `username`               | Your Docker registry (DockerHub, etc.) username    | `N/A`                                                                   |
 | `password`               | Your Docker registry (DockerHub, etc.) password    | `N/A`                                                                   |
-| `placeholder`                           | Aqua Enforcer token    | `N/A`                                                     |
+| `placeholder`                           | token    | `N/A`                                                     |
 | `server`                          | Gateway host name    | `N/A`                                                     |
 | `port`   
+
+### Tenant Resource Quotas
+
+| Parameter                         | Description                          | Default                                                                      |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| `resourceQuota.enabled`               | Set if to create new pull image secret    | `false`                                                                 |
+| `name`               | Your Docker pull image secret name    | `N/A`                                                                   |
+| `username`               | Your Docker registry (DockerHub, etc.) username    | `N/A`                                                                   |
+| `password`               | Your Docker registry (DockerHub, etc.) password    | `N/A`                                                                   |
+| `placeholder`                           | token    | `N/A`                                                     |
+| `server`                          | Gateway host name    | `N/A`                                                     |
+| `port`   
+
+
+### Tenant Limit Range
+
+| Parameter                         | Description                          | Default                                                                      |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| `limitRange.enabled`               | Set if to create new pull image secret    | `false`                                                                 |
+| `name`               | Your Docker pull image secret name    | `N/A`                                                                   |
+| `username`               | Your Docker registry (DockerHub, etc.) username    | `N/A`                                                                   |
+| `password`               | Your Docker registry (DockerHub, etc.) password    | `N/A`                                                                   |
+| `placeholder`                           | token    | `N/A`                                                     |
+| `server`                          | Gateway host name    | `N/A`                                                     |
+| `port`   
+
+### Tenant Flux Config
+
+| Parameter                         | Description                          | Default                                                                      |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| `fluxConfig.enabled`               | Whether to create a flux config in the tenant    | `false`                                                                 |
+| `fluxConfig.url`               | The GitRepository URL    | `"."`                                                                   |
+| `fluxConfig.path`               | The Kustomization path for the GitRepository | `"./$name"`                                                                   |  
 
 ## Issues and feedback
 
