@@ -143,11 +143,6 @@ rules:
   verbs:
   - get
   - list
-- apiGroups: ["monitoring.kiali.io"] # kiali API group
-  resources:
-  verbs:
-  - get
-  - list
 - apiGroups: ["rabbitmq.com"] # rabbitmq API group
   resources:
   - binding

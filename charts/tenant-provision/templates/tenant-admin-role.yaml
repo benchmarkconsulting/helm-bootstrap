@@ -198,16 +198,6 @@ rules:
   - update
   - patch
   - delete
-- apiGroups: ["monitoring.kiali.io"] # kiali API group
-  resources:
-  verbs:
-  - get
-  - list
-  - watch
-  - create
-  - update
-  - patch
-  - delete
 - apiGroups: ["rabbitmq.com"] # rabbitmq API group
   resources:
   - binding

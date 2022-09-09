@@ -154,12 +154,6 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["monitoring.kiali.io"] # kiali API group
-  resources:
-  verbs:
-  - get
-  - list
-  - watch
 - apiGroups: ["rabbitmq.com"] # rabbitmq API group
   resources:
   - binding
