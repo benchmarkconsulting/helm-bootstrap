@@ -11,7 +11,7 @@ metadata:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 rules:
-- apiGroups: ["", "apps", "admissionregistration.k8s.io", "autoscaling", "batch", "certificates.k8s.io", "helm.toolkit.fluxcd.io", "metrics.k8s.io", "networking.k8s.io", "notification.toolkit.fluxcd.io", "policy", "rbac.authorization.k8s.io", "source.toolkit.fluxcd.io", "spv.no", "storage.k8s.io", "kyverno.io", "wgpolicyk8s.io", "kustomize.toolkit.fluxcd.io" ] # "" indicates the core API group
+- apiGroups: [""] # "" indicates the core API group
   resources:
   - bindings
   - componentstatuses
@@ -30,46 +30,242 @@ rules:
   - secrets
   - serviceaccounts
   - services
-  - mutatingwebhookconfigurations
-  - validatingwebhookconfigurations
-  - controllerrevisions
-  - daemonsets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["apps", "autoscaling", "batch", "policy"] #Other Core functions API groups
+  resources:
+  - controllerrevisions                    
+  - daemonsets                
   - deployments
   - replicasets
   - statefulsets
   - horizontalpodautoscalers
   - cronjobs
   - jobs
+  - poddisruptionbudgets
+  - podsecuritypolicies
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["admissionregistration.k8s.io", "certificates.k8s.io", "metrics.k8s.io", "networking.k8s.io" ] # Extended core API groups
+  resources:
+  - mutatingwebhookconfigurations 
+  - validatingwebhookconfigurations
   - certificatesigningrequests
-  - configs
-  - events
-  - helmreleases
-  - kustomizations
   - nodes
   - pods
   - ingressclasses
   - ingresses
   - networkpolicies
-  - alerts
-  - receivers
-  - poddisruptionbudgets
-  - podsecuritypolicies
-  - clusterrolebindings
-  - clusterroles
-  - rolebindings
-  - roles
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io"] # Flux API groups
+  resources:
+  - helmreleases
   - buckets
   - gitrepositories
   - helmcharts
-  - helmrepositories
-  - ocirepositories
-  - azurekeyvaultsecrets
+  - helmrepositories 
+  - kustomizations
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["storage.k8s.io"] # Storage API group
+  resources:
   - csidrivers
   - csinodes
   - csistoragecapacities
   - storageclasses
-  - volumeattachments
-  - constrainttemplates
+  - volumeattachments  
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["rbac.authorization.k8s.io"] # RBAC API group
+  resources:
+  - clusterrolebindings
+  - clusterroles
+  - rolebindings
+  - roles
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["spv.no"] # spv.no API group
+  resources:
+  - azurekeyvaultsecrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
+  resources:
+  - clusterpolicies
+  - clusterreportchangerequests
+  - generaterequests
+  - policies
+  - reportchangerequests
+  - updaterequests
+  - clusterpolicyreports
+  - policyreports
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["cert-manager.io"] # wgpolicyk8s API group
+  resources:
+  - certificaterequests
+  - certificates
+  - challenges
+  - clusterissuers
+  - issuers
+  - orders
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "monitoring.kiali.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["jaegertracing.io"] # jaeger API group
+  resources:
+  - jaegers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["monitoring.kiali.io"] # kiali API group
+  resources:
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["rabbitmq.com"] # rabbitmq API group
+  resources:
+  - binding
+  - bindinglist
+  - exchange
+  - exchangelist
+  - federation
+  - federationlist
+  - permission
+  - permissionlist
+  - policy
+  - policylist
+  - queue
+  - queuelist
+  - schemareplication
+  - schemareplicationlist
+  - shovel
+  - shovellist
+  - user
+  - userlist
+  - vhost
+  - vhostlist
+  - superstream
+  - superstreamlist
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["monitoring.coreos.com"] # promstack API group
+  resources:
+  - servicemonitors
+  - alertmanagerconfigs
+  - alertmanagers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["velero.io"] # velero API group
+  resources:
+  - backups
+  - backupstoragelocations
+  - deletebackuprequests
+  - downloadrequests
+  - podvolumebackups
+  - podvolumerestores
+  - resticrepositories
+  - restores
+  - schedules
+  - serverstatusrequests
+  - volumesnapshotlocations
   verbs:
   - get
   - list
