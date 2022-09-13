@@ -7,6 +7,8 @@ kind: HelmRepository
 metadata:
   name: bootstrap
   namespace: {{ $name }}
+  labels:
+    platform/type: tenant
 spec:
   interval: 5m
   url: {{ $flux.tenantConfig.helmRepo }}

@@ -19,8 +19,6 @@ rules:
   - endpoints
   - events
   - limitranges
-  - namespaces
-  - nodes
   - persistentvolumeclaims
   - persistentvolumes
   - pods
