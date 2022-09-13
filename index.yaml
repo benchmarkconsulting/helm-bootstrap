@@ -3,6 +3,16 @@ entries:
   cluster-rbac:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-09-13T14:10:24.062364673Z"
+    description: A Helm chart for Kubernetes
+    digest: 593b26231f1e45a99e0e32d44b4c2af87e854e3c9c8129444a497f16c158845d
+    name: cluster-rbac
+    type: application
+    urls:
+    - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/cluster-rbac-0.1.1/cluster-rbac-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-08-30T13:24:58.33721884Z"
     description: A Helm chart for Kubernetes
     digest: 6af325e450e424f9320d8dfb9407d668ada64215fd3414badcad76a08742aeda
@@ -34,6 +44,16 @@ entries:
     - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/namespace-bootstrap-0.1.0/namespace-bootstrap-0.1.0.tgz
     version: 0.1.0
   tenant-provision:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-09-13T14:10:24.256563752Z"
+    description: A Helm chart for Kubernetes
+    digest: 1047789565391b6d623511cfa0e3f083510b8105d441d621d6dc0c3b548458c0
+    name: tenant-provision
+    type: application
+    urls:
+    - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/tenant-provision-0.1.1/tenant-provision-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-08-30T13:24:58.739006949Z"
