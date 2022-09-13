@@ -1,6 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $flux := $tenantConfig.flux | default dict -}}
+{{- if (($flux.helmRepo).enabled) | default true -}}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
@@ -11,5 +12,6 @@ metadata:
 spec:
   interval: 1m
   url: https://artifactory.platform.manulife.io/artifactory/helm
+  {{- end }}
 ---
 {{- end }}
