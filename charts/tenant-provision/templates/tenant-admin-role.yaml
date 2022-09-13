@@ -14,14 +14,11 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
   - bindings
-  - componentstatuses
   - configmaps
   - endpoints
   - events
   - limitranges
-  - namespaces
   - persistentvolumeclaims
-  - persistentvolumes
   - pods
   - podtemplates
   - replicationcontrollers
@@ -48,7 +45,6 @@ rules:
   - cronjobs
   - jobs
   - poddisruptionbudgets
-  - podsecuritypolicies
   verbs:
   - get
   - list
@@ -59,12 +55,9 @@ rules:
   - delete
 - apiGroups: ["admissionregistration.k8s.io", "certificates.k8s.io", "metrics.k8s.io", "networking.k8s.io" ] # Extended core API groups
   resources:
-  - mutatingwebhookconfigurations 
   - validatingwebhookconfigurations
-  - certificatesigningrequests
   - nodes
   - pods
-  - ingressclasses
   - ingresses
   - networkpolicies
   verbs:
@@ -75,8 +68,9 @@ rules:
   - update
   - patch
   - delete
-- apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io"] # Flux API groups
+- apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"] # Flux API groups
   resources:
+  - alerts
   - helmreleases
   - buckets
   - gitrepositories
@@ -93,8 +87,6 @@ rules:
   - delete
 - apiGroups: ["storage.k8s.io"] # Storage API group
   resources:
-  - csidrivers
-  - csinodes
   - csistoragecapacities
   - storageclasses
   - volumeattachments  
@@ -108,8 +100,6 @@ rules:
   - delete
 - apiGroups: ["rbac.authorization.k8s.io"] # RBAC API group
   resources:
-  - clusterrolebindings
-  - clusterroles
   - rolebindings
   - roles
   verbs:
@@ -133,13 +123,10 @@ rules:
   - delete
 - apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
   resources:
-  - clusterpolicies
-  - clusterreportchangerequests
   - generaterequests
   - policies
   - reportchangerequests
   - updaterequests
-  - clusterpolicyreports
   - policyreports
   verbs:
   - get
@@ -149,12 +136,11 @@ rules:
   - update
   - patch
   - delete
-- apiGroups: ["cert-manager.io"] # wgpolicyk8s API group
+- apiGroups: ["cert-manager.io", "acme.cert-manager.io"] # cert-manager API group
   resources:
   - certificaterequests
   - certificates
   - challenges
-  - clusterissuers
   - issuers
   - orders
   verbs:
@@ -165,7 +151,7 @@ rules:
   - update
   - patch
   - delete
-- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "monitoring.kiali.io"] # Istio API group
+- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "kiali.io"] # Istio API group
   resources:
   - peerauthentications
   - httpapispecs
@@ -234,6 +220,11 @@ rules:
   - servicemonitors
   - alertmanagerconfigs
   - alertmanagers
+  - podmonitors
+  - probes
+  - prometheuses
+  - prometheusrules
+  - thanosrulers
   verbs:
   - get
   - list
@@ -255,6 +246,19 @@ rules:
   - schedules
   - serverstatusrequests
   - volumesnapshotlocations
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["keda.sh"] # keda API group
+  resources:
+  - scaledjobs
+  - scaledobjects
+  - triggerauthentications
   verbs:
   - get
   - list

@@ -111,7 +111,62 @@ rules:
   - generaterequests 
   - policyreports 
   - reportchangerequests 
-  - updaterequests 
+  - updaterequests
+  - alertmanagerconfigs
+  - alertmanagers
+  - authorizationpolicies
+  - backendconfigs
+  - backups
+  - backupstoragelocations
+  - capacityrequests
+  - certificaterequests
+  - certificates
+  - challenges
+  - clusterissuers
+  - clustertriggerauthentications
+  - deletebackuprequests
+  - destinationrules
+  - downloadrequests
+  - envoyfilters
+  - frontendconfigs
+  - gateways
+  - issuers
+  - istiooperators
+  - jaegers
+  - kialis
+  - managedcertificates
+  - orders
+  - peerauthentications
+  - podmonitors
+  - podvolumebackups
+  - podvolumerestores
+  - probes
+  - prometheuses
+  - prometheusrules
+  - proxyconfigs
+  - requestauthentications
+  - resticrepositories
+  - restores
+  - scaledjobs
+  - scaledobjects
+  - schedules
+  - serverstatusrequests
+  - serviceattachments
+  - serviceentries
+  - servicemonitors
+  - servicenetworkendpointgroups
+  - sidecars
+  - storagestates
+  - storageversionmigrations
+  - telemetries
+  - thanosrulers
+  - triggerauthentications
+  - updateinfos
+  - virtualservices
+  - volumesnapshotlocations
+  - wasmplugins
+  - workloadentries
+  - workloadgroups
   verbs:
   - get
   - list 

@@ -116,7 +116,7 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["cert-manager.io"] # wgpolicyk8s API group
+- apiGroups: ["cert-manager.io", "acme.cert-manager.io"] # cert-manager API group
   resources:
   - certificaterequests
   - certificates
@@ -128,7 +128,7 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "monitoring.kiali.io"] # Istio API group
+- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "kiali.io"] # Istio API group
   resources:
   - peerauthentications
   - httpapispecs
@@ -189,6 +189,11 @@ rules:
   - servicemonitors
   - alertmanagerconfigs
   - alertmanagers
+  - podmonitors
+  - probes
+  - prometheuses
+  - prometheusrules
+  - thanosrulers
   verbs:
   - get
   - list
@@ -206,6 +211,15 @@ rules:
   - schedules
   - serverstatusrequests
   - volumesnapshotlocations
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["keda.sh"] # keda API group
+  resources:
+  - scaledjobs
+  - scaledobjects
+  - triggerauthentications
   verbs:
   - get
   - list
