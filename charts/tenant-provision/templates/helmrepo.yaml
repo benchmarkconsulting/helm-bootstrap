@@ -4,7 +4,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: global-artifactory
+  name: "global-artifactory-"{{ $name }}
   namespace: {{ $name }}
   labels:
     platform/type: tenant
