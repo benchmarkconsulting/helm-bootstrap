@@ -55,8 +55,6 @@ rules:
   - delete
 - apiGroups: ["admissionregistration.k8s.io", "certificates.k8s.io", "metrics.k8s.io", "networking.k8s.io" ] # Extended core API groups
   resources:
-  - validatingwebhookconfigurations
-  - nodes
   - pods
   - ingresses
   - networkpolicies
@@ -71,6 +69,8 @@ rules:
 - apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"] # Flux API groups
   resources:
   - alerts
+  - providers
+  - receivers
   - helmreleases
   - buckets
   - gitrepositories
@@ -88,8 +88,29 @@ rules:
 - apiGroups: ["storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
-  - storageclasses
-  - volumeattachments  
+  - volumesnapshots 
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["coordination.k8s.io"] # Coordination API group
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups: ["discovery.k8s.io"] # Discovery API group
+  resources:
+  - endpointslices
   verbs:
   - get
   - list
@@ -100,6 +121,7 @@ rules:
   - delete
 - apiGroups: ["rbac.authorization.k8s.io"] # RBAC API group
   resources:
+  - localsubjectaccessreviews
   - rolebindings
   - roles
   verbs:
@@ -151,7 +173,7 @@ rules:
   - update
   - patch
   - delete
-- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "kiali.io"] # Istio API group
+- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "extensions.istio.io", "telemetry.istio.io", "kiali.io"] # Istio API group
   resources:
   - peerauthentications
   - httpapispecs
@@ -164,6 +186,15 @@ rules:
   - serviceentries
   - virtualservices
   - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
   verbs:
   - get
   - list

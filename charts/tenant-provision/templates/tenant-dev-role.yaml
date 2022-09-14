@@ -14,13 +14,11 @@ rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
   - bindings
-  - componentstatuses
   - configmaps
   - endpoints
   - events
   - limitranges
   - persistentvolumeclaims
-  - persistentvolumes
   - pods
   - podtemplates
   - replicationcontrollers
@@ -43,19 +41,13 @@ rules:
   - cronjobs
   - jobs
   - poddisruptionbudgets
-  - podsecuritypolicies
   verbs:
   - get
   - list
   - watch
 - apiGroups: ["admissionregistration.k8s.io", "certificates.k8s.io", "metrics.k8s.io", "networking.k8s.io" ] # Extended core API groups
   resources:
-  - mutatingwebhookconfigurations 
-  - validatingwebhookconfigurations
-  - certificatesigningrequests
-  - nodes
   - pods
-  - ingressclasses
   - ingresses
   - networkpolicies
   verbs:
@@ -64,6 +56,9 @@ rules:
   - watch
 - apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io"] # Flux API groups
   resources:
+  - alerts
+  - providers
+  - receivers
   - helmreleases
   - buckets
   - gitrepositories
@@ -73,22 +68,32 @@ rules:
   verbs:
   - get
   - list
-  - watche
+  - watch
 - apiGroups: ["storage.k8s.io"] # Storage API group
   resources:
-  - csidrivers
-  - csinodes
   - csistoragecapacities
-  - storageclasses
-  - volumeattachments  
+  - volumesnapshots 
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["coordination.k8s.io"] # Coordination API group
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["discovery.k8s.io"] # Discovery API group
+  resources:
+  - endpointslices
   verbs:
   - get
   - list
   - watch
 - apiGroups: ["rbac.authorization.k8s.io"] # RBAC API group
   resources:
-  - clusterrolebindings
-  - clusterroles
+  - localsubjectaccessreviews
   - rolebindings
   - roles
   verbs:
@@ -104,13 +109,10 @@ rules:
   - watch
 - apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
   resources:
-  - clusterpolicies
-  - clusterreportchangerequests
   - generaterequests
   - policies
   - reportchangerequests
   - updaterequests
-  - clusterpolicyreports
   - policyreports
   verbs:
   - get
@@ -121,14 +123,13 @@ rules:
   - certificaterequests
   - certificates
   - challenges
-  - clusterissuers
   - issuers
   - orders
   verbs:
   - get
   - list
   - watch
-- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "kiali.io"] # Istio API group
+- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "extensions.istio.io", "telemetry.istio.io", "kiali.io"] # Istio API group
   resources:
   - peerauthentications
   - httpapispecs
@@ -141,6 +142,15 @@ rules:
   - serviceentries
   - virtualservices
   - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
   verbs:
   - get
   - list
