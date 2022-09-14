@@ -66,6 +66,16 @@ entries:
   tenant-provision:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-09-14T15:43:16.060918605Z"
+    description: A Helm chart for Kubernetes
+    digest: 73312769236e4869beda65fa7048c8772f70327e60006898e551018536cdc566
+    name: tenant-provision
+    type: application
+    urls:
+    - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/tenant-provision-0.1.4/tenant-provision-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-09-13T20:11:29.494197141Z"
     description: A Helm chart for Kubernetes
     digest: ff8154e346c81611136e7267b3323a00601e1f08aa5124fa297d84e3821ce0ec
