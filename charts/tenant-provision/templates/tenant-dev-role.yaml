@@ -69,7 +69,7 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["storage.k8s.io"] # Storage API group
+- apiGroups: ["storage.k8s.io", "snapshot.storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
   - volumesnapshots 
@@ -91,7 +91,7 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["rbac.authorization.k8s.io"] # RBAC API group
+- apiGroups: ["rbac.authorization.k8s.io", "authorization.k8s.io"]] # Authorization API group
   resources:
   - localsubjectaccessreviews
   - rolebindings
