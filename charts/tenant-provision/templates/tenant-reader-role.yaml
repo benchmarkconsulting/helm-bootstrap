@@ -162,10 +162,6 @@ rules:
   - get
   - list
   - watch
-  - create
-  - update
-  - patch
-  - delete
 - apiGroups: ["rabbitmq.com"] # rabbitmq API group
   resources:
   - binding
