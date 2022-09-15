@@ -69,7 +69,7 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["storage.k8s.io"] # Storage API group
+- apiGroups: ["storage.k8s.io", "snapshot.storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
   - volumesnapshots 
