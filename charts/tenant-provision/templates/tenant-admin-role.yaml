@@ -158,6 +158,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["cert-manager.io", "acme.cert-manager.io"] # cert-manager API group
   resources:
   - certificaterequests
