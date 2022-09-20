@@ -27,7 +27,7 @@ rules:
   - serviceaccounts
   - services
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["apps", "autoscaling", "batch", "policy"] #Other Core functions API groups
   resources:
@@ -49,7 +49,7 @@ rules:
   - ingresses
   - networkpolicies
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"] # Flux API groups
   resources:
@@ -63,26 +63,26 @@ rules:
   - helmrepositories 
   - kustomizations
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["storage.k8s.io", "snapshot.storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
   - volumesnapshots 
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["coordination.k8s.io"] # Coordination API group
   resources:
   - leases
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["discovery.k8s.io"] # Discovery API group
   resources:
   - endpointslices
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["rbac.authorization.k8s.io", "authorization.k8s.io"] # Authorization API group
   resources:
@@ -92,11 +92,12 @@ rules:
   verbs:
   - get
   - list
+  - watch
 - apiGroups: ["spv.no"] # spv.no API group
   resources:
   - azurekeyvaultsecrets
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
   resources:
@@ -106,7 +107,7 @@ rules:
   - updaterequests
   - policyreports
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["cert-manager.io", "acme.cert-manager.io"] # cert-manager API group
   resources:
@@ -116,7 +117,7 @@ rules:
   - issuers
   - orders
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "extensions.istio.io", "telemetry.istio.io", "kiali.io"] # Istio API group
   resources:
@@ -141,13 +142,13 @@ rules:
   - requestauthentications
   - telemetries
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["jaegertracing.io"] # jaeger API group
   resources:
   - jaegers
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["rabbitmq.com"] # rabbitmq API group
   resources:
@@ -174,7 +175,7 @@ rules:
   - superstream
   - superstreamlist
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["monitoring.coreos.com"] # promstack API group
   resources:
@@ -187,7 +188,7 @@ rules:
   - prometheusrules
   - thanosrulers
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["velero.io"] # velero API group
   resources:
@@ -203,7 +204,7 @@ rules:
   - serverstatusrequests
   - volumesnapshotlocations
   verbs:
-  - get
+  - watch
   - list
 - apiGroups: ["keda.sh"] # keda API group
   resources:
@@ -211,7 +212,7 @@ rules:
   - scaledobjects
   - triggerauthentications
   verbs:
-  - get
+  - watch
   - list
   {{- end }}
 ---
