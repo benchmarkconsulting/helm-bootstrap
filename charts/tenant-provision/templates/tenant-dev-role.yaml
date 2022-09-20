@@ -30,48 +30,96 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["apps", "autoscaling", "batch", "policy"] #Other Core functions API groups
+- apiGroups: ["apps"] #Other Core functions API groups
   resources:
   - controllerrevisions                    
   - daemonsets                
   - deployments
   - replicasets
   - statefulsets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["autoscaling"] #Other Core functions API groups
+  resources:
   - horizontalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["batch"] #Other Core functions API groups
+  resources:
   - cronjobs
   - jobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["policy"] #Other Core functions API groups
+  resources:
   - poddisruptionbudgets
   verbs:
   - get
   - list
   - watch
-- apiGroups: ["admissionregistration.k8s.io", "certificates.k8s.io", "metrics.k8s.io", "networking.k8s.io" ] # Extended core API groups
+- apiGroups: ["metrics.k8s.io"] # Extended core API groups
   resources:
   - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["networking.k8s.io" ] # Extended core API groups
+  resources:
   - ingresses
   - networkpolicies
   verbs:
   - get
   - list
   - watch
-- apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"] # Flux API groups
+- apiGroups: ["helm.toolkit.fluxcd.io"] # Flux API groups
   resources:
-  - alerts
-  - providers
-  - receivers
   - helmreleases
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["source.toolkit.fluxcd.io"] # Flux API groups
+  resources:
   - buckets
   - gitrepositories
   - helmcharts
   - helmrepositories 
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["kustomize.toolkit.fluxcd.io"] # Flux API groups
+  resources:
   - kustomizations
   verbs:
   - get
   - list
   - watch
-- apiGroups: ["storage.k8s.io", "snapshot.storage.k8s.io"] # Storage API group
+- apiGroups: ["notification.toolkit.fluxcd.io"] # Flux API groups
+  resources:
+  - alerts
+  - providers
+  - receivers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["snapshot.storage.k8s.io"] # Storage API group
+  resources:
   - volumesnapshots 
   verbs:
   - get
@@ -91,11 +139,18 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["rbac.authorization.k8s.io", "authorization.k8s.io"] # Authorization API group
+- apiGroups: ["rbac.authorization.k8s.io"], "authorization.k8s.io"] # Authorization API group
   resources:
   - localsubjectaccessreviews
   - rolebindings
   - roles
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["authorization.k8s.io"] # Authorization API group
+  resources:
+  - localsubjectaccessreviews
   verbs:
   - get
   - list
@@ -107,22 +162,33 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
+- apiGroups: ["kyverno.io"] # kyverno API group
   resources:
   - generaterequests
   - policies
   - reportchangerequests
   - updaterequests
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["wgpolicyk8s.io"] # kyverno API group
+  resources:
   - policyreports
   verbs:
   - get
   - list
   - watch
-  - create
-- apiGroups: ["cert-manager.io", "acme.cert-manager.io"] # cert-manager API group
+- apiGroups: ["cert-manager.io"] # cert-manager API group
   resources:
   - certificaterequests
   - certificates
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["acme.cert-manager.io"] # cert-manager API group
+  resources:
   - challenges
   - issuers
   - orders
@@ -130,7 +196,38 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "extensions.istio.io", "telemetry.istio.io", "kiali.io"] # Istio API group
+- apiGroups: ["install.istio.io"] # Istio API group
+  resources:
+  - istiooperators
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["security.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - authorizationpolicies
+  - requestauthentications
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["networking.istio.io"] # Istio API group
+  resources:
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - proxyconfigs
+  - serviceentries
+  - sidecars
+  - virtualservices
+  - workloadentries
+  - workloadgroups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["config.istio.io"] # Istio API group
   resources:
   - peerauthentications
   - httpapispecs
@@ -152,6 +249,105 @@ rules:
   - authorizationpolicies
   - requestauthentications
   - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["rbac.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["authentication.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["mixer.validation.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["extensions.istio.io"] # Istio API group
+  resources:
+  - wasmplugins
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["telemetry.istio.io"] # Istio API group
+  resources:
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups: ["kiali.io"] # Istio API group
+  resources:
+  - kialis
   verbs:
   - get
   - list
