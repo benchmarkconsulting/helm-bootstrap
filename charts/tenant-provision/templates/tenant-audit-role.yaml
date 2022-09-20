@@ -126,10 +126,10 @@ rules:
   - watch
 - apiGroups: ["rbac.authorization.k8s.io"] # Authorization API group
   resources:
-  - localsubjectaccessreviews
   - rolebindings
   - roles
   verbs:
+  - get
   - list
   - watch
 - apiGroups: ["authorization.k8s.io"] # Authorization API group
