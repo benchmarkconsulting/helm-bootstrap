@@ -35,18 +35,13 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["apps", "autoscaling", "batch", "policy"] #Other Core functions API groups
+- apiGroups: ["apps"] #Other Core functions API groups
   resources:
   - controllerrevisions                    
   - daemonsets                
   - deployments
   - replicasets
   - statefulsets
-  - horizontalpodautoscalers
-  - cronjobs
-  - jobs
-  - poddisruptionbudgets
-  - deletecollection
   verbs:
   - get
   - list
@@ -55,9 +50,58 @@ rules:
   - update
   - patch
   - delete
-- apiGroups: ["admissionregistration.k8s.io", "certificates.k8s.io", "metrics.k8s.io", "networking.k8s.io" ] # Extended core API groups
+  - deletecollection
+- apiGroups: ["autoscaling"] #Other Core functions API groups
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["batch"] #Other Core functions API groups
+  resources:
+  - cronjobs
+  - jobs
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["policy"] #Other Core functions API groups
+  resources:
+  - poddisruptionbudgets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["metrics.k8s.io"] # Extended core API groups
   resources:
   - pods
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["networking.k8s.io" ] # Extended core API groups
+  resources:
   - ingresses
   - networkpolicies
   verbs:
@@ -69,16 +113,35 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"] # Flux API groups
+- apiGroups: ["helm.toolkit.fluxcd.io"] # Flux API groups
   resources:
-  - alerts
-  - providers
-  - receivers
   - helmreleases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["source.toolkit.fluxcd.io"] # Flux API groups
+  resources:
   - buckets
   - gitrepositories
   - helmcharts
   - helmrepositories 
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["kustomize.toolkit.fluxcd.io"] # Flux API groups
+  resources:
   - kustomizations
   verbs:
   - get
@@ -89,9 +152,34 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["storage.k8s.io", "snapshot.storage.k8s.io"] # Storage API group
+- apiGroups: ["notification.toolkit.fluxcd.io"] # Flux API groups
+  resources:
+  - alerts
+  - providers
+  - receivers
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["snapshot.storage.k8s.io"] # Storage API group
+  resources:
   - volumesnapshots 
   verbs:
   - get
@@ -126,11 +214,23 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["rbac.authorization.k8s.io", "authorization.k8s.io"] # Authorization API group
+- apiGroups: ["rbac.authorization.k8s.io"] # Authorization API group
   resources:
   - localsubjectaccessreviews
   - rolebindings
   - roles
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["authorization.k8s.io"] # Authorization API group
+  resources:
+  - localsubjectaccessreviews
   verbs:
   - get
   - list
@@ -152,12 +252,23 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
+- apiGroups: ["kyverno.io"] # kyverno API group
   resources:
   - generaterequests
   - policies
   - reportchangerequests
   - updaterequests
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["wgpolicyk8s.io"] # kyverno API group
+  resources:
   - policyreports
   verbs:
   - get
@@ -168,10 +279,21 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["cert-manager.io", "acme.cert-manager.io"] # cert-manager API group
+- apiGroups: ["cert-manager.io"] # cert-manager API group
   resources:
   - certificaterequests
   - certificates
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["acme.cert-manager.io"] # cert-manager API group
+  resources:
   - challenges
   - issuers
   - orders
@@ -184,7 +306,53 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "extensions.istio.io", "telemetry.istio.io", "kiali.io"] # Istio API group
+- apiGroups: ["install.istio.io"] # Istio API group
+  resources:
+  - istiooperators
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["security.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - authorizationpolicies
+  - requestauthentications
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["networking.istio.io"] # Istio API group
+  resources:
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - proxyconfigs
+  - serviceentries
+  - sidecars
+  - virtualservices
+  - workloadentries
+  - workloadgroups
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["config.istio.io"] # Istio API group
   resources:
   - peerauthentications
   - httpapispecs
@@ -206,6 +374,135 @@ rules:
   - authorizationpolicies
   - requestauthentications
   - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["rbac.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["authentication.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["mixer.validation.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["extensions.istio.io"] # Istio API group
+  resources:
+  - wasmplugins
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["telemetry.istio.io"] # Istio API group
+  resources:
+  - telemetries
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["kiali.io"] # Istio API group
+  resources:
+  - kialis
   verbs:
   - get
   - list
