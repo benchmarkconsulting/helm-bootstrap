@@ -124,7 +124,7 @@ rules:
   verbs:
   - list
   - watch
-- apiGroups: ["rbac.authorization.k8s.io"], "authorization.k8s.io"] # Authorization API group
+- apiGroups: ["rbac.authorization.k8s.io"], # Authorization API group
   resources:
   - localsubjectaccessreviews
   - rolebindings
