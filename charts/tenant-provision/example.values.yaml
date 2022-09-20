@@ -2,6 +2,7 @@ tenants:
   team-test1:
     flux:
       path: ./team-test1
+    rbac:
       tenantAdminRole: 
         groupObjectId: "ObjectId"
       tenantAuditRole: 
@@ -19,6 +20,7 @@ tenants:
   team-test2:
     flux:
       path: ./team-test2
+    rbac:
       tenantAdminRole: 
         groupObjectId: "ObjectId"
       tenantAuditRole: 
