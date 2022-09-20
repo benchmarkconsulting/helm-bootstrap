@@ -34,6 +34,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["apps", "autoscaling", "batch", "policy"] #Other Core functions API groups
   resources:
   - controllerrevisions                    
@@ -45,6 +46,7 @@ rules:
   - cronjobs
   - jobs
   - poddisruptionbudgets
+  - deletecollection
   verbs:
   - get
   - list
@@ -66,6 +68,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["helm.toolkit.fluxcd.io", "source.toolkit.fluxcd.io", "kustomize.toolkit.fluxcd.io", "notification.toolkit.fluxcd.io"] # Flux API groups
   resources:
   - alerts
@@ -85,6 +88,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["storage.k8s.io", "snapshot.storage.k8s.io"] # Storage API group
   resources:
   - csistoragecapacities
@@ -97,6 +101,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["coordination.k8s.io"] # Coordination API group
   resources:
   - leases
@@ -108,6 +113,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["discovery.k8s.io"] # Discovery API group
   resources:
   - endpointslices
@@ -119,6 +125,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["rbac.authorization.k8s.io", "authorization.k8s.io"] # Authorization API group
   resources:
   - localsubjectaccessreviews
@@ -132,6 +139,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["spv.no"] # spv.no API group
   resources:
   - azurekeyvaultsecrets
@@ -143,6 +151,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["kyverno.io", "wgpolicyk8s.io"] # kyverno API group
   resources:
   - generaterequests
@@ -174,6 +183,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["install.istio.io", "security.istio.io", "networking.istio.io", "config.istio.io", "rbac.istio.io", "authentication.istio.io", "mixer.validation.istio.io", "extensions.istio.io", "telemetry.istio.io", "kiali.io"] # Istio API group
   resources:
   - peerauthentications
@@ -204,6 +214,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["jaegertracing.io"] # jaeger API group
   resources:
   - jaegers
@@ -215,6 +226,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["rabbitmq.com"] # rabbitmq API group
   resources:
   - binding
@@ -247,6 +259,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["monitoring.coreos.com"] # promstack API group
   resources:
   - servicemonitors
@@ -265,6 +278,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["velero.io"] # velero API group
   resources:
   - backups
@@ -286,6 +300,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
 - apiGroups: ["keda.sh"] # keda API group
   resources:
   - scaledjobs
@@ -299,6 +314,7 @@ rules:
   - update
   - patch
   - delete
+  - deletecollection
   {{- end }}
 ---
 {{- end }}
