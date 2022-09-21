@@ -166,7 +166,6 @@ rules:
   - workloadentries
   - workloadgroups
   verbs:
-  - watch
   - list
 - apiGroups: ["rbac.authorization.k8s.io"] # Authorization API group
   resources:
@@ -177,6 +176,5 @@ rules:
   verbs:
   - get
   - list
-  - watch
   {{- end }}
 {{- end }}
