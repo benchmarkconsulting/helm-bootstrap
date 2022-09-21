@@ -12,10 +12,10 @@ metadata:
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 spec:
   hard:
-    requests.cpu: {{ $quotas.resourceQuota.requests.cpu | default 1 }} 
-    requests.memory: {{ $quotas.resourceQuota.requests.memory | default "1Gi" }}
-    limits.cpu: {{ $quotas.resourceQuota.limits.cpu | default 2 }}
-    limits.memory: {{ $quotas.resourceQuota.limits.memory | default "2Gi" }}
+    requests.cpu: {{ $quotas.resourceQuota.requests.cpu | default 10 }} 
+    requests.memory: {{ $quotas.resourceQuota.requests.memory | default "10Gi" }}
+    limits.cpu: {{ $quotas.resourceQuota.limits.cpu | default 20 }}
+    limits.memory: {{ $quotas.resourceQuota.limits.memory | default "20Gi" }}
   {{- end }}
 ---
 {{- end }}
