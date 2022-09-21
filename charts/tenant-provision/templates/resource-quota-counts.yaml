@@ -1,7 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
-{{- $flux := $tenantConfig.flux | default dict -}}
-{{- if (($flux.quotaCounts).enabled) | default false -}}
+{{- $quotas := $tenantConfig.quotas | default dict -}}
+{{- if (($quotas.quotaCounts).enabled) | default false -}}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -12,12 +12,12 @@ metadata:
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 spec:
   hard:
-    configmaps: {{ $flux.quotaCounts.configmaps | default 100 }}
-    persistentvolumeclaims: {{ $flux.quotaCounts.persistentvolumeclaims | default 100 }}
-    pods: {{ $flux.quotaCounts.pods | default 100 }}
-    replicationcontrollers: {{ $flux.quotaCounts.replicationcontrollers | default 100 }}
-    secrets: {{ $flux.quotaCounts.secrets | default 100 }}
-    services: {{ $flux.quotaCounts.services | default 100 }}
+    configmaps: {{ $quotas.quotaCounts.configmaps | default 100 }}
+    persistentvolumeclaims: {{ $quotas.quotaCounts.persistentvolumeclaims | default 100 }}
+    pods: {{ $quotas.quotaCounts.pods | default 100 }}
+    replicationcontrollers: {{ $quotas.quotaCounts.replicationcontrollers | default 100 }}
+    secrets: {{ $quotas.quotaCounts.secrets | default 100 }}
+    services: {{ $quotas.quotaCounts.services | default 100 }}
   {{- end }}
 ---
 {{- end }}

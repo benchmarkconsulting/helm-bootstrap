@@ -1,7 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $kyverno := $tenantConfig.kyverno | default dict -}}
-{{- if (($kyverno.labelPolicy).enable) | default false -}}
+{{- if (($kyverno.labelPolicy).enabled) | default false -}}
 apiVersion: kyverno.io/v1
 kind: Policy
 metadata:

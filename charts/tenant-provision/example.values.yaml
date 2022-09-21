@@ -11,11 +11,13 @@ tenants:
         groupObjectId: "ObjectId"
       tenantReaderRole: 
         groupObjectId: "ObjectId"
-      limitRange:
-        enabled: true
+    quotas:
       quotaCounts:
         enabled: true
       resourceQuota:
+        enabled: true
+    kyverno:
+      labelPolicy:
         enabled: true
   team-test2:
     flux:
