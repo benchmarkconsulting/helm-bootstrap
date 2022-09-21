@@ -31,10 +31,7 @@ tenants:
         groupObjectId: "ObjectId"
       tenantReaderRole: 
         groupObjectId: "ObjectId"
-      limitRange:
-        enabled: true
-        defaultCpu:
-        defaultRequestCpu:
+    quotas:
       quotaCounts:
         enabled: true
         configmaps: 150
