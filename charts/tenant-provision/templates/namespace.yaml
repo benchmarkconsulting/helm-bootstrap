@@ -1,5 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
-{{- if not (lookup "v1" "Namespace" "" $name) }}
+{{- $tenantConfig := $tenant | default dict -}}
+{{- $namespace := $tenantConfig.namespace | default dict -}}
+{{- if ($namespace.enabled) | default true -}}
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -7,8 +9,6 @@ metadata:
   labels:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
-  annotations:
-    helm.sh/resource-policy: keep
-{{- end }}
+ {{- end }}
 ---
 {{- end }}

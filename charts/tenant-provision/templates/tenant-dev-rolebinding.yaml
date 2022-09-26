@@ -17,7 +17,7 @@ roleRef:
 subjects:
 - kind: Group
   namespace:  {{ $name }}
-  name: {{ default "." $rbac.tenantDevRole.groupObjectId }}
+  name: {{ default "." (($rbac.tenantDevRole).groupObjectId) }}
   {{- end }}
 ---
 {{- end }}

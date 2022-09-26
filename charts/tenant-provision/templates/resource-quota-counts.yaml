@@ -12,12 +12,12 @@ metadata:
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 spec:
   hard:
-    configmaps: {{ $quotas.quotaCounts.configmaps | default 100 }}
-    persistentvolumeclaims: {{ $quotas.quotaCounts.persistentvolumeclaims | default 100 }}
-    pods: {{ $quotas.quotaCounts.pods | default 100 }}
-    replicationcontrollers: {{ $quotas.quotaCounts.replicationcontrollers | default 100 }}
-    secrets: {{ $quotas.quotaCounts.secrets | default 100 }}
-    services: {{ $quotas.quotaCounts.services | default 100 }}
+    configmaps: {{ default 100 (($quotas.quotaCounts).configmaps) }}
+    persistentvolumeclaims: {{ default 100 (($quotas.quotaCounts).persistentvolumeclaims) }}
+    pods: {{ default 100 (($quotas.quotaCounts).pods) }}
+    replicationcontrollers: {{ default 100 (($quotas.quotaCounts).replicationcontrollers) }}
+    secrets: {{ default 100 (($quotas.quotaCounts).secrets) }}
+    services: {{ default 100 (($quotas.quotaCounts).services) }}
   {{- end }}
 ---
 {{- end }}
