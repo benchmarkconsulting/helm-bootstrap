@@ -24,7 +24,11 @@ Group Created in Azure Active Directory
 
 ### Container Registry Credentials
 
-## Installing the Charts
+## Installing the Chart
+helm add repo
+helm install 
+
+## Installing the Charts using Flux
 ```yaml
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
@@ -131,6 +135,12 @@ tenants:
         enabled: true
       resourceQuota:
         enabled: true
+        requests:
+          cpu: 1
+          memory: 1Gi
+        limits:
+          cpu: 2
+          memory: 4Gi
 ```
 
 ### Tenant Kyverno Policy
