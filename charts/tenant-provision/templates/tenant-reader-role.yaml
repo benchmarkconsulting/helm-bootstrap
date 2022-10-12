@@ -390,6 +390,15 @@ rules:
   verbs:
   - list
   - watch
+- apiGroups: ["external-secrets.io"] # keda API group
+  resources:
+  - clusterexternalsecret
+  - clustersecretstore 
+  - externalsecret 
+  - secretstore 
+  verbs:
+  - list
+  - watch
   {{- end }}
 ---
 {{- end }}

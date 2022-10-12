@@ -177,5 +177,15 @@ rules:
   - get
   - list
   - watch
+- apiGroups: ["external-secrets.io"] # keda API group
+  resources:
+  - clusterexternalsecret
+  - clustersecretstore 
+  - externalsecret 
+  - secretstore 
+  verbs:
+  - get
+  - list
+  - watch
   {{- end }}
 {{- end }}

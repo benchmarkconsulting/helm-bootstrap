@@ -612,6 +612,21 @@ rules:
   - patch
   - delete
   - deletecollection
+- apiGroups: ["external-secrets.io"] # keda API group
+  resources:
+  - clusterexternalsecret
+  - clustersecretstore 
+  - externalsecret 
+  - secretstore 
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
   {{- end }}
 ---
 {{- end }}
