@@ -1,7 +1,13 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $namespace := $tenantConfig.namespace | default dict -}}
-{{- if ($namespace.enabled) | default true -}}
+{{- define "ns" -}}
+{{- $ns := lookup "v1" "Namespace" "" $name -}}
+{{- if $ns := true -}}
+{{- ($namespace.enabled) := false -}}
+{{- else -}}
+{{- ($namespace.enabled) := true -}}
+{{- if ($namespace.enabled) -}}
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -9,6 +15,7 @@ metadata:
   labels:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
+  {{- end }}
  {{- end }}
 ---
 {{- end }}
