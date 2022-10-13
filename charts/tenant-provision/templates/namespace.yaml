@@ -1,7 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $namespace := $tenantConfig.namespace | default dict -}}
-{{- if ($namespace.enabled) | default true -}}
+{{- if ($namespace.create) | default false -}}
 apiVersion: v1
 kind: Namespace
 metadata:
