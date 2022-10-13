@@ -24,7 +24,7 @@ metadata:
     platform/type: tenant
 spec:
   interval: 1h
-  path: {{ default "./$name" $flux.fluxConfig.path }}
+  path: {{ default "./{{ $name }}" (($flux.fluxConfig).path) }}
   prune: true
   serviceAccountName: flux
   targetNamespace: {{ $name }}

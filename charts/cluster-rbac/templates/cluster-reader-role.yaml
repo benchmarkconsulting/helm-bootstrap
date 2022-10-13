@@ -1,5 +1,4 @@
-{{- if ((.Values.clusterReaderRole).enable) | default true -}}
-  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.clusterReaderRole.name) }}
+{{- if ((.Values.clusterReaderRole).enabled) | default true -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -170,5 +169,13 @@ rules:
   verbs:
   - list 
   - watch 
-  {{- end }}
+- apiGroups: ["external-secrets.io"] # keda API group
+  resources:
+  - clusterexternalsecret
+  - clustersecretstore 
+  - externalsecret 
+  - secretstore 
+  verbs:
+  - list 
+  - watch
 {{- end }}

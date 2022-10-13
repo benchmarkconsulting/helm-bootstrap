@@ -1,7 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
-{{- $flux := $tenantConfig.flux | default dict -}}
-{{- if (($flux.resourceQuota).enabled) | default false -}}
+{{- $quotas := $tenantConfig.quotas | default dict -}}
+{{- if (($quotas.resourceQuota).enabled) | default false -}}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -12,11 +12,10 @@ metadata:
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 spec:
   hard:
-    requests.cpu: {{ $flux.resourceQuota.requests.cpu | default 1 }} 
-    requests.memory: {{ $flux.resourceQuota.requests.memory | default "1Gi" }}
-    limits.cpu: {{ $flux.resourceQuota.limits.cpu | default 2 }}
-    limits.memory: {{ $flux.resourceQuota.limits.memory | default "2Gi" }}
+    requests.cpu: {{ default 10 ((($quotas.resourceQuota).requests).cpu) }}
+    requests.memory: {{ default "10Gi" ((($quotas.resourceQuota).requests).memory) }}
+    limits.cpu: {{ default 20 ((($quotas.resourceQuota).limits).cpu) }}
+    limits.memory: {{ default "20Gi" ((($quotas.resourceQuota).limits).memory) }}
   {{- end }}
 ---
 {{- end }}
-

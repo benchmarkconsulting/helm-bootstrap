@@ -1,5 +1,4 @@
-{{- if ((.Values.clusterAuditRole).enable) | default true -}}
-  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.clusterAuditRole.name) }}
+{{- if ((.Values.clusterAuditRole).enabled) | default true -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -166,6 +165,7 @@ rules:
   - workloadentries
   - workloadgroups
   verbs:
+  - watch
   - list
 - apiGroups: ["rbac.authorization.k8s.io"] # Authorization API group
   resources:
@@ -176,5 +176,15 @@ rules:
   verbs:
   - get
   - list
-  {{- end }}
+  - watch
+- apiGroups: ["external-secrets.io"] # keda API group
+  resources:
+  - clusterexternalsecret
+  - clustersecretstore 
+  - externalsecret 
+  - secretstore 
+  verbs:
+  - get
+  - list
+  - watch
 {{- end }}

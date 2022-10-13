@@ -2,6 +2,7 @@ tenants:
   team-test1:
     flux:
       path: ./team-test1
+    rbac:
       tenantAdminRole: 
         groupObjectId: "ObjectId"
       tenantAuditRole: 
@@ -10,15 +11,18 @@ tenants:
         groupObjectId: "ObjectId"
       tenantReaderRole: 
         groupObjectId: "ObjectId"
-      limitRange:
-        enabled: true
+    quotas:
       quotaCounts:
         enabled: true
       resourceQuota:
         enabled: true
+    kyverno:
+      labelPolicy:
+        enabled: true
   team-test2:
     flux:
       path: ./team-test2
+    rbac:
       tenantAdminRole: 
         groupObjectId: "ObjectId"
       tenantAuditRole: 
@@ -27,10 +31,7 @@ tenants:
         groupObjectId: "ObjectId"
       tenantReaderRole: 
         groupObjectId: "ObjectId"
-      limitRange:
-        enabled: true
-        defaultCpu:
-        defaultRequestCpu:
+    quotas:
       quotaCounts:
         enabled: true
         configmaps: 150

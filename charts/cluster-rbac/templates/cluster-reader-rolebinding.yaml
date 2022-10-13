@@ -1,5 +1,4 @@
-{{- if ((.Values.clusterReaderRole).enable) | default true -}}
-  {{- if not (lookup "rbac.authorization.k8s.io/v1" "ClusterRoleBinding" "" .Values.clusterReaderRole.name) }}
+{{- if ((.Values.clusterReaderRole).enabled) | default true -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -17,5 +16,4 @@ roleRef:
 subjects:
 - kind: Group
   name: {{ ((.Values.clusterReaderRole).groupObjectId) | default "objectID" }}
-  {{- end }}
 {{- end }}
