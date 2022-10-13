@@ -16,5 +16,4 @@ roleRef:
 subjects:
 - kind: Group
   name: {{ ((.Values.clusterReaderRole).groupObjectId) | default "objectID" }}
-  {{- end }}
 {{- end }}

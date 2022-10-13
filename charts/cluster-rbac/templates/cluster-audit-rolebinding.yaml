@@ -16,5 +16,4 @@ roleRef:
 subjects:
 - kind: Group
   name: {{ ((.Values.clusterAuditRole).groupObjectId) | default "objectID" }}
-  {{- end }}
 {{- end }}

@@ -178,5 +178,4 @@ rules:
   verbs:
   - list 
   - watch
-  {{- end }}
 {{- end }}
