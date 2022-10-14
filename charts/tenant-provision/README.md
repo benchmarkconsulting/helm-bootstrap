@@ -72,6 +72,18 @@ spec:
 ```
 ## Configurable Variables
 
+### Tenant Namespace
+
+| Parameter                         | Description                          | Default                                                                      |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| `namespace.create`               | Whether to create the corresponding namespace. If the Namespace is pre-existing then the default will be sufficient   | `false`   
+
+```yaml
+tenants:
+  team-test1:
+    namespace:
+      create: true
+```
 ### Tenant RBAC
 
 | Parameter                         | Description                          | Default                                                                      |
@@ -185,6 +197,39 @@ tenants:
     enabled: true
     path: ./team-test1
 ```
+
+## Emerging Technology Section
+
+### Tenant ESO AKV
+| Parameter                         | Description                          | Default                                                                      |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| `akv_eso.enabled`               | Whether to create a akv eso secret store in the tenant    | `false`                                                                 |
+| `akv_eso.url`               | The GitRepository URL    | `"."`                                                                   |
+| `akv_eso.path`               | The Kustomization path for the GitRepository | `"./$name"`   
+
+```yaml
+tenants:
+  team-test1:
+    secret:
+      akv_eso:
+        enable: true
+```
+
+### Tenant ESO Vault
+| Parameter                         | Description                          | Default                                                                      |
+| --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| `vault_eso.enabled`               | Whether to create a vault eso secret store in the tenant    | `false`                                                                 |
+| `vault_eso.url`               | The GitRepository URL    | `"."`                                                                   |
+| `vault_eso.path`               | The Kustomization path for the GitRepository | `""`   
+
+```yaml
+tenants:
+  team-test1:
+    secret:
+      vault_eso:
+        enable: true
+```
+
 ## Issues and feedback
 
 If you encounter any problems or would like to give us feedback on deployments, raise issues here on GitHub.
