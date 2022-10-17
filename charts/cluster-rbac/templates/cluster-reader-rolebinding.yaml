@@ -1,4 +1,4 @@
-{{- if ((.Values.clusterReaderRole).enabled) | default true -}}
+{{- if ((.Values.clusterReaderRole).enabled) | default false -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
