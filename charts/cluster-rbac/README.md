@@ -25,17 +25,17 @@ This is a Helm chart for initialization and maintenance of creating RBAC for Clu
 
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| `clusterAdminRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `true`                                                                 |
+| `clusterAdminRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `false`                                                                 |
 | `clusterAdminRole.name`               | The group object ID from AZAD for the tenantAdminRole group.  | `N/A`       |
-| `clusterAdminRole.groupObjectId`              | Whether to create the Role and Role binding for tenantAuditRole. |   `true`                                                                                                                              
+| `clusterAdminRole.groupObjectId`              | Whether to create the Role and Role binding for tenantAuditRole. |   `false`                                                                                                                              
 
 ### ClusterAudit RBAC Role
 
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| `clusterAuditRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `true`                                                                 |
+| `clusterAuditRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `false`                                                                 |
 | `clusterAuditRole.name`               | The group object ID from AZAD for the tenantAdminRole group.  | `N/A`                                                                   |
-| `clusterAuditRole.groupObjectId`               | Whether to create the Role and Role binding for tenantAuditRole.    | `true`                                                                   |
+| `clusterAuditRole.groupObjectId`               | Whether to create the Role and Role binding for tenantAuditRole.    | `false`                                                                   |
 
 
 
@@ -43,9 +43,9 @@ This is a Helm chart for initialization and maintenance of creating RBAC for Clu
 
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| `clusterReaderRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `true`                                                                 |
+| `clusterReaderRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `false`                                                                 |
 | `clusterReaderRole.name`               | The group object ID from AZAD for the tenantAdminRole group.  | `N/A`                                                                   |
-| `clusterReaderRole.groupObjectId`               | Whether to create the Role and Role binding for tenantAuditRole.    | `true`                                                                   |                                                                  |
+| `clusterReaderRole.groupObjectId`               | Whether to create the Role and Role binding for tenantAuditRole.    | `false`                                                                   |                                                                  |
 
 
 ## Issues and feedback

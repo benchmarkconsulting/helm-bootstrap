@@ -1,7 +1,7 @@
 {{- range $name, $tenant := .Values.tenants }}
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $rbac := $tenantConfig.rbac | default dict -}}
-{{- if (($rbac.tenantReaderRole).enabled) | default true -}}
+{{- if (($rbac.tenantReaderRole).enabled) | default false -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -163,13 +163,13 @@ rules:
   resources:
   - certificaterequests
   - certificates
-  - issuers
   verbs:
   - list
   - watch
 - apiGroups: ["acme.cert-manager.io"] # cert-manager API group
   resources:
   - challenges
+  - issuers
   - orders
   verbs:
   - list
@@ -199,6 +199,106 @@ rules:
   - virtualservices
   - workloadentries
   - workloadgroups
+  verbs:
+  - list
+  - watch
+- apiGroups: ["config.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - list
+  - watch
+- apiGroups: ["rbac.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - list
+  - watch
+- apiGroups: ["authentication.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
+  verbs:
+  - list
+  - watch
+- apiGroups: ["mixer.validation.istio.io"] # Istio API group
+  resources:
+  - peerauthentications
+  - httpapispecs
+  - httpapispecbindings
+  - quotaspecs
+  - quotaspecbindings
+  - destinationrules
+  - envoyfilters
+  - gateways
+  - serviceentries
+  - virtualservices
+  - kialis
+  - wasmplugins
+  - istiooperators
+  - proxyconfigs
+  - sidecars
+  - workloadentries
+  - workloadgroups
+  - authorizationpolicies
+  - requestauthentications
+  - telemetries
   verbs:
   - list
   - watch

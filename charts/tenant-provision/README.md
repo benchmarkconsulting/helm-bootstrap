@@ -78,29 +78,39 @@ spec:
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
 | `namespace.create`               | Whether to create the corresponding namespace. If the Namespace is pre-existing then the default will be sufficient   | `false`   
 
+#### Creating a Namespace
 ```yaml
 tenants:
   team-test1:
     namespace:
       create: true
 ```
+
+#### Pre-existing namespace
+
+```yaml
+tenants:
+  team-test1:
+```
+
 ### Tenant RBAC
 
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| `tenantAdminRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `true`                                                                 |
+| `tenantAdminRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `false`                                                                 |
 | `tenantAdminRole.groupObjectId`               | The group object ID from AZAD for the tenantAdminRole group.  | `N/A`                                                                   |
-| `tenantAuditRole.enable`               | Whether to create the Role and Role binding for tenantAuditRole.    | `true`                                                                   |
+| `tenantAuditRole.enable`               | Whether to create the Role and Role binding for tenantAuditRole.    | `false`                                                                   |
 | `tenantAuditRole.groupObjectId`               | The group object ID from AZAD for the tenantAuditRole group.    | `N/A`                                                                   |
-| `tenantReaderRole.enable`                          | Whether to create the Role and Role binding for tenantReaderRole.   | `true`                                                     |
+| `tenantReaderRole.enable`                          | Whether to create the Role and Role binding for tenantReaderRole.   | `false`                                                     |
 | `tenantReaderRole.groupObjectId`                          |  The group object ID from AZAD for the tenantReaderRole group.    | `N/A`                                                  |
-| `tenantDevRole.enable`                            | Whether to create the Role and Role binding for tenantDevRole.    | `true`                                                     |
+| `tenantDevRole.enable`                            | Whether to create the Role and Role binding for tenantDevRole.    | `false`                                                     |
 | `tenantDevRole.groupObjectId`                              |  The group object ID from AZAD for the tenantDevRole group.  | `N/A`                                                  |
 
 ```yaml
 tenants:
   team-test1:
     rbac:
+      enabled: true
       tenantAdminRole: 
         groupObjectId: "ObjectId"
       tenantAuditRole: 
@@ -204,8 +214,8 @@ tenants:
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
 | `akv_eso.enabled`               | Whether to create a akv eso secret store in the tenant    | `false`                                                                 |
-| `akv_eso.url`               | The GitRepository URL    | `"."`                                                                   |
-| `akv_eso.path`               | The Kustomization path for the GitRepository | `"./$name"`   
+| `akv_eso.`               | The    | `"."`                                                                   |
+| `akv_eso.`               | The  | `"./$name"`   
 
 ```yaml
 tenants:
@@ -219,8 +229,8 @@ tenants:
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
 | `vault_eso.enabled`               | Whether to create a vault eso secret store in the tenant    | `false`                                                                 |
-| `vault_eso.url`               | The GitRepository URL    | `"."`                                                                   |
-| `vault_eso.path`               | The Kustomization path for the GitRepository | `""`   
+| `vault_eso.`               | The     | `"."`                                                                   |
+| `vault_eso.`               | The  | `""`   
 
 ```yaml
 tenants:
