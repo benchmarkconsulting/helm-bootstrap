@@ -179,10 +179,10 @@ rules:
   - watch
 - apiGroups: ["external-secrets.io"] # keda API group
   resources:
-  - clusterexternalsecret
-  - clustersecretstore 
-  - externalsecret 
-  - secretstore 
+  - clusterexternalsecrets
+  - clustersecretstores
+  - externalsecrets 
+  - secretstores 
   verbs:
   - get
   - list
