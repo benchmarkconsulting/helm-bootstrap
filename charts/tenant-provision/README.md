@@ -33,11 +33,11 @@ helm install
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: tenant1
+  name: global-artifactory
   namespace: flux-system
 spec:
   interval: 5m
-  url: https://benchmarkconsulting.github.io/helm-bootstrap
+  url: https://artifactory.platform.manulife.io/artifactory/helm
 ```
 
 ```yaml
@@ -53,21 +53,27 @@ spec:
       chart: tenant-provision
       sourceRef:
         kind: HelmRepository
-        name: tenant1
+        name: global-artifactory
         namespace: flux-system
-      version: 0.1.0
+      version: 0.1.22
   interval: 1m0s
   values:
     tenants:
       tenant1a:
+        namespace:
+          create: true
         rbac:
           tenantAdminRole:
+            enabled: true
             groupObjectId: "8783d9bf-3730-4371-aeb7-817e10dfc794"
           tenantAuditRole:
+            enabled: true
             groupObjectId: "f7ee8319-03f2-4656-9eb7-7196df622509"
           tenantDevRole:
+            enabled: true
             groupObjectId: "79757788-82b9-4442-a076-858cee86d1e8"
           tenantReaderRole:
+            enabled: true
             groupObjectId: "2bfabfba-8efb-4e6e-9f7c-9253fcc7a22e"
 ```
 ## Configurable Variables
@@ -97,27 +103,30 @@ tenants:
 
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| `tenantAdminRole.enable`               | Whether to create the Role and Role binding for tenantAdminRole.    | `false`                                                                 |
+| `tenantAdminRole.enabled`               | Whether to create the Role and Role binding for tenantAdminRole.    | `false`                                                                 |
 | `tenantAdminRole.groupObjectId`               | The group object ID from AZAD for the tenantAdminRole group.  | `N/A`                                                                   |
-| `tenantAuditRole.enable`               | Whether to create the Role and Role binding for tenantAuditRole.    | `false`                                                                   |
+| `tenantAuditRole.enabled`               | Whether to create the Role and Role binding for tenantAuditRole.    | `false`                                                                   |
 | `tenantAuditRole.groupObjectId`               | The group object ID from AZAD for the tenantAuditRole group.    | `N/A`                                                                   |
-| `tenantReaderRole.enable`                          | Whether to create the Role and Role binding for tenantReaderRole.   | `false`                                                     |
+| `tenantReaderRole.enabled`                          | Whether to create the Role and Role binding for tenantReaderRole.   | `false`                                                     |
 | `tenantReaderRole.groupObjectId`                          |  The group object ID from AZAD for the tenantReaderRole group.    | `N/A`                                                  |
-| `tenantDevRole.enable`                            | Whether to create the Role and Role binding for tenantDevRole.    | `false`                                                     |
+| `tenantDevRole.enabled`                            | Whether to create the Role and Role binding for tenantDevRole.    | `false`                                                     |
 | `tenantDevRole.groupObjectId`                              |  The group object ID from AZAD for the tenantDevRole group.  | `N/A`                                                  |
 
 ```yaml
 tenants:
   team-test1:
     rbac:
-      enabled: true
-      tenantAdminRole: 
+      tenantAdminRole:
+        enabled: true
         groupObjectId: "ObjectId"
-      tenantAuditRole: 
+      tenantAuditRole:
+        enabled: true
         groupObjectId: "ObjectId"
-      tenantDevRole: 
+      tenantDevRole:
+        enabled: true
         groupObjectId: "ObjectId"
-      tenantReaderRole: 
+      tenantReaderRole:
+        enabled: true
         groupObjectId: "ObjectId"
 ```
 ### Tenant Secrets
@@ -184,7 +193,7 @@ tenants:
 | Parameter                         | Description                          | Default                                                                      |
 | --------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
 | `serviceaccount.enabled`               | Whether to create a flux config in the tenant    | `false`                                                                 |
-| `serviceaccount.name`               | The GitRepository URL    | `deploy-sa`                                                                   |
+| `serviceaccount.name`               | The name of the service account being created    | `deploy-sa`                                                                   |
 
 ```yaml
 tenants:
