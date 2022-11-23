@@ -3,6 +3,16 @@ entries:
   cluster-rbac:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-11-23T23:07:11.842419407Z"
+    description: A Helm chart for Kubernetes
+    digest: 27fbc033783fad831f65a1c0cd2d44d21288871a0a7a40ed3ddd4c2d689350c7
+    name: cluster-rbac
+    type: application
+    urls:
+    - https://github.com/benchmarkconsulting/helm-bootstrap/releases/download/cluster-rbac-0.1.9/cluster-rbac-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-11-23T17:50:10.009217751Z"
     description: A Helm chart for Kubernetes
     digest: 0d06d879dd3619506c89b31194ddacab0bbabbd55e8adea3d584797a04154096
