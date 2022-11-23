@@ -167,6 +167,8 @@ rules:
   - workloadentries
   - workloadgroups
   - ocirepositories
+  - admissionreports
+  - backgroundscanreports
   verbs:
   - list 
   - watch 

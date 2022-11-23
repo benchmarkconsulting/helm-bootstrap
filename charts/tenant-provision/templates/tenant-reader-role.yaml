@@ -151,6 +151,8 @@ rules:
   - policies
   - reportchangerequests
   - updaterequests
+  - admissionreports
+  - backgroundscanreports
   verbs:
   - list
   - watch

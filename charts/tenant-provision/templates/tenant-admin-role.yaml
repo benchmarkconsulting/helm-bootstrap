@@ -259,6 +259,8 @@ rules:
   - policies
   - reportchangerequests
   - updaterequests
+  - admissionreports
+  - backgroundscanreports
   verbs:
   - get
   - list
