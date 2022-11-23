@@ -164,6 +164,7 @@ rules:
   - wasmplugins
   - workloadentries
   - workloadgroups
+  - ocirepositories
   verbs:
   - watch
   - list

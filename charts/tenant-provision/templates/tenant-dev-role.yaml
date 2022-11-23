@@ -91,6 +91,7 @@ rules:
   - gitrepositories
   - helmcharts
   - helmrepositories 
+  - ocirepositories
   verbs:
   - get
   - list

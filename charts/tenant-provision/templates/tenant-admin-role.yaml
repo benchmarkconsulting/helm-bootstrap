@@ -130,7 +130,8 @@ rules:
   - buckets
   - gitrepositories
   - helmcharts
-  - helmrepositories 
+  - helmrepositories
+  - ocirepositories 
   verbs:
   - get
   - list
