@@ -427,12 +427,21 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["external-secrets.io"] # keda API group
+- apiGroups: ["external-secrets.io"] # external secret operator API group
   resources:
-  - clusterexternalsecret
-  - clustersecretstore 
-  - externalsecret 
-  - secretstore 
+  - externalsecrets 
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups: ["external-secrets.io"] # external secret operator API group
+  resources:
+  - secretstores 
   verbs:
   - get
   - list

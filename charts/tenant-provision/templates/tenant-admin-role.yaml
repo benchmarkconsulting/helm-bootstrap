@@ -614,10 +614,8 @@ rules:
   - deletecollection
 - apiGroups: ["external-secrets.io"] # keda API group
   resources:
-  - clusterexternalsecret
-  - clustersecretstore 
-  - externalsecret 
-  - secretstore 
+  - externalsecrets 
+  - secretstores 
   verbs:
   - get
   - list
