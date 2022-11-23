@@ -1,5 +1,20 @@
 tenants:
   team-test1:
+    secret:
+      eso:
+        enabled: true
+        azure_secret_store_name: 
+        azure_vaultUrl: 
+        azure_managed_identity_client_id:
+        azure_tenant_id:
+        hc_vault_secret_store_name: 
+        hc_vault_server: 
+        hc_vault_secret_path: 
+        hc_vault_kv_version: 
+        hc_vault_jwt_auth_path: 
+        hc_vault_jwt_role: 
+        
+
     flux:
       path: ./team-test1
     rbac:
