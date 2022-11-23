@@ -83,6 +83,7 @@ rules:
   - gitrepositories
   - helmcharts
   - helmrepositories 
+  - ocirepositories
   verbs:
   - list
   - watch
@@ -150,6 +151,8 @@ rules:
   - policies
   - reportchangerequests
   - updaterequests
+  - admissionreports
+  - backgroundscanreports
   verbs:
   - list
   - watch
@@ -390,12 +393,10 @@ rules:
   verbs:
   - list
   - watch
-- apiGroups: ["external-secrets.io"] # keda API group
+- apiGroups: ["external-secrets.io"]  # external secrets operator API group
   resources:
-  - clusterexternalsecret
-  - clustersecretstore 
-  - externalsecret 
-  - secretstore 
+  - externalsecrets 
+  - secretstores 
   verbs:
   - list
   - watch

@@ -164,6 +164,9 @@ rules:
   - wasmplugins
   - workloadentries
   - workloadgroups
+  - ocirepositories
+  - admissionreports
+  - backgroundscanreports
   verbs:
   - watch
   - list
@@ -177,12 +180,12 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["external-secrets.io"] # keda API group
+- apiGroups: ["external-secrets.io"]  # external secrets operator API group
   resources:
-  - clusterexternalsecret
-  - clustersecretstore 
-  - externalsecret 
-  - secretstore 
+  - clusterexternalsecrets
+  - clustersecretstores
+  - externalsecrets 
+  - secretstores 
   verbs:
   - get
   - list
