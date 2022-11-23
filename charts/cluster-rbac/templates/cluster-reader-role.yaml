@@ -169,7 +169,7 @@ rules:
   verbs:
   - list 
   - watch 
-- apiGroups: ["external-secrets.io"] # keda API group
+- apiGroups: ["external-secrets.io"]  # external secrets operator API group
   resources:
   - clusterexternalsecrets
   - clustersecretstores

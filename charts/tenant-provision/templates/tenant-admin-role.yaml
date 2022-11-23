@@ -612,7 +612,7 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["external-secrets.io"] # keda API group
+- apiGroups: ["external-secrets.io"]  # external secrets operator API group
   resources:
   - externalsecrets 
   - secretstores 

@@ -427,7 +427,7 @@ rules:
   - get
   - list
   - watch
-- apiGroups: ["external-secrets.io"] # external secret operator API group
+- apiGroups: ["external-secrets.io"] # external secrets operator API group
   resources:
   - externalsecrets 
   verbs:
@@ -439,7 +439,7 @@ rules:
   - patch
   - delete
   - deletecollection
-- apiGroups: ["external-secrets.io"] # external secret operator API group
+- apiGroups: ["external-secrets.io"] # external secrets operator API group
   resources:
   - secretstores 
   verbs:
