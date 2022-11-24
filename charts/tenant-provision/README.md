@@ -75,6 +75,19 @@ spec:
           tenantReaderRole:
             enabled: true
             groupObjectId: "2bfabfba-8efb-4e6e-9f7c-9253fcc7a22e"
+        secret:
+      eso:
+        enabled: true
+        azure_secret_store_name: 
+        azure_vaultUrl: 
+        azure_managed_identity_client_id:
+        azure_tenant_id:
+        hc_vault_secret_store_name: 
+        hc_vault_server: 
+        hc_vault_secret_path: 
+        hc_vault_kv_version: 
+        hc_vault_jwt_auth_path: 
+        hc_vault_jwt_role: 
 ```
 ## Configurable Variables
 

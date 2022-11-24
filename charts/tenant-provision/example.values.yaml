@@ -1,5 +1,21 @@
 tenants:
   team-test1:
+    flux:
+      path: ./team-test1
+    rbac:
+      tenantAdminRole: 
+        groupObjectId: "ObjectId"
+      tenantAuditRole: 
+        groupObjectId: "ObjectId"
+      tenantDevRole: 
+        groupObjectId: "ObjectId"
+      tenantReaderRole: 
+        groupObjectId: "ObjectId"
+    serviceaccount:
+      enabled: true 
+      name: deploy-sa
+      roleBinding:
+        name: deploy-rb
     secret:
       eso:
         enabled: true
@@ -13,24 +29,22 @@ tenants:
         hc_vault_kv_version: 
         hc_vault_jwt_auth_path: 
         hc_vault_jwt_role: 
-        
-
-    flux:
-      path: ./team-test1
-    rbac:
-      tenantAdminRole: 
-        groupObjectId: "ObjectId"
-      tenantAuditRole: 
-        groupObjectId: "ObjectId"
-      tenantDevRole: 
-        groupObjectId: "ObjectId"
-      tenantReaderRole: 
-        groupObjectId: "ObjectId"
     quotas:
       quotaCounts:
         enabled: true
+        configmaps: 150
+        persistentvolumeclaims: 150
+        pods: 150
+        secrets: 150
+        services: 150
       resourceQuota:
         enabled: true
+        requests: 
+          cpu: 2
+          memory: 2Gi
+        limits: 
+          cpu: 4
+          memory: 4Gi
     kyverno:
       labelPolicy:
         enabled: true
