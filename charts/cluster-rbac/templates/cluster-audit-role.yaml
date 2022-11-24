@@ -6,6 +6,8 @@ metadata:
   labels:
     {{- include "cluster-rbac.labels" . | nindent 4 }}
   {{- with ((.Values.clusterAuditRole).annotations) }}
+    aclName: {{ default "." ((.Values.clusterAuditRole).aclName) }}
+  aclName:
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}

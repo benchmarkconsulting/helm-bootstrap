@@ -9,6 +9,7 @@ metadata:
   namespace: {{ $name }}
   labels:
     platform/type: tenant
+    aclName: {{ default "." (($rbac.tenantReaderRole).aclName) }}
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
