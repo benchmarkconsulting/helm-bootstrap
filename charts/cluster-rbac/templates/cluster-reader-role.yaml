@@ -169,7 +169,9 @@ rules:
   - workloadgroups
   - ocirepositories
   - admissionreports
+  - clusteradmissionreports
   - backgroundscanreports
+  - clusterbackgroundscanreports
   verbs:
   - list 
   - watch 
