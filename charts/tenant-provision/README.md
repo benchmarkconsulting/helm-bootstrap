@@ -59,35 +59,83 @@ spec:
   interval: 1m0s
   values:
     tenants:
-      tenant1a:
-        namespace:
-          create: true
+      team-test1:
+        flux:
+          path: ./team-test1
+        kyverno:
+          labelPolicy:
+            enabled: true
+        quotas:
+          quotaCounts:
+            configmaps: 150
+            enabled: true
+            persistentvolumeclaims: 150
+            pods: 150
+            secrets: 150
+            services: 150
+          resourceQuota:
+            enabled: true
+            limits:
+              cpu: 4
+              memory: 4Gi
+            requests:
+              cpu: 2
+              memory: 2Gi
         rbac:
           tenantAdminRole:
-            enabled: true
-            groupObjectId: "8783d9bf-3730-4371-aeb7-817e10dfc794"
+            groupObjectId: ObjectId
           tenantAuditRole:
-            enabled: true
-            groupObjectId: "f7ee8319-03f2-4656-9eb7-7196df622509"
+            groupObjectId: ObjectId
           tenantDevRole:
-            enabled: true
-            groupObjectId: "79757788-82b9-4442-a076-858cee86d1e8"
+            groupObjectId: ObjectId
           tenantReaderRole:
-            enabled: true
-            groupObjectId: "2bfabfba-8efb-4e6e-9f7c-9253fcc7a22e"
+            groupObjectId: ObjectId
         secret:
-      eso:
-        enabled: true
-        azure_secret_store_name: 
-        azure_vaultUrl: 
-        azure_managed_identity_client_id:
-        azure_tenant_id:
-        hc_vault_secret_store_name: 
-        hc_vault_server: 
-        hc_vault_secret_path: 
-        hc_vault_kv_version: 
-        hc_vault_jwt_auth_path: 
-        hc_vault_jwt_role: 
+          eso:
+            enabled: true
+            azure_secret_store_name: azure-secret-store
+            azure_managed_identity_client_id: 6e0adb10-1c95-4321-a6da-3f6d248901d1
+            azure_tenant_id: 65b6be73-2104-4ff4-899f-5bff3196f3d1
+            azure_vaultUrl: https://example.vault.azure.net/
+            hc_vault_jwt_auth_path: clustere1
+            hc_vault_jwt_role: team-test1
+            hc_vault_kv_version: v2
+            hc_vault_secret_path: team-test1
+            hc_vault_secret_store_name: vault-secret-store
+            hc_vault_server: http://127.0.0.1:8200/
+        serviceaccount:
+          enabled: true
+          name: deploy-sa
+          roleBinding:
+            name: deploy-rb
+      team-test2:
+        flux:
+          path: ./team-test2
+        quotas:
+          quotaCounts:
+            configmaps: 150
+            enabled: true
+            persistentvolumeclaims: 150
+            pods: 150
+            secrets: 150
+            services: 150
+          resourceQuota:
+            enabled: true
+            limits:
+              cpu: 4
+              memory: 4Gi
+            requests:
+              cpu: 2
+              memory: 2Gi
+        rbac:
+          tenantAdminRole:
+            groupObjectId: ObjectId
+          tenantAuditRole:
+            groupObjectId: ObjectId
+          tenantDevRole:
+            groupObjectId: ObjectId
+          tenantReaderRole:
+            groupObjectId: ObjectId
 ```
 ## Configurable Variables
 
