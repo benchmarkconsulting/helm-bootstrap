@@ -13,7 +13,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: tenant-admin
+  name: deploy-spn
 subjects:
 - kind: Group
   namespace:  {{ $name }}
