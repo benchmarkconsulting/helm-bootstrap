@@ -15,7 +15,7 @@ roleRef:
   kind: Role
   name: deploy-spn
 subjects:
-- kind: Group
+- kind: User
   namespace:  {{ $name }}
   name: {{ default "." (($deployment.spn).objectID) }}
   {{- end }}
