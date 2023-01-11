@@ -9,7 +9,7 @@ metadata:
   namespace: {{ $name }}
   labels:
     platform/type: tenant
-    aclName: {{ default "placeholder" (($rbac.tenantAuditRole).aclName) }}
+    aclName: {{ default "aclName_PlaceHolder" (($rbac.tenantAuditRole).aclName) }}
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io

@@ -2,6 +2,7 @@
 {{- $tenantConfig := $tenant | default dict -}}
 {{- $namespace := $tenantConfig.namespace | default dict -}}
 {{- if ($namespace.create) | default false -}}
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -10,5 +11,4 @@ metadata:
     platform/type: tenant
     {{- include "tenant-provision.labels" $ | nindent 4 }}
  {{- end }}
----
 {{- end }}

@@ -9,7 +9,7 @@ metadata:
   namespace: {{ $name }}
   labels:
     platform/type: tenant
-    aclName: {{ default "placeholder" (($rbac.tenantDevRole).aclName) }}
+    aclName: {{ default "aclName_PlaceHolder" (($rbac.tenantDevRole).aclName) }}
     {{- include "tenant-provision.labels" $ | nindent 4 }}
 rules:
 - apiGroups: [""] # "" indicates the core API group
