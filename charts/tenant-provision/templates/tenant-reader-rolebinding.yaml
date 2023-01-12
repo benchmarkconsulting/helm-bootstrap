@@ -19,7 +19,7 @@ subjects:
 - kind: Group
   namespace:  {{ $name }}
   name: {{ default "" (($rbac.tenantReaderRole).groupObjectId) }}
+---  
   {{- end }}
----
 {{- end }}
 

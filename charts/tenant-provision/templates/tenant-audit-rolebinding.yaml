@@ -19,6 +19,6 @@ subjects:
 - kind: Group
   namespace: {{ $name }}
   name: {{ default "." (($rbac.tenantAuditRole).groupObjectId) }}
-  {{- end }}
 ---
+  {{- end }}
 {{- end }}

@@ -629,6 +629,6 @@ rules:
   - patch
   - delete
   - deletecollection
-  {{- end }}
 ---
+  {{- end }}
 {{- end }}

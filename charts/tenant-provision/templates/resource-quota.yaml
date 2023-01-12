@@ -16,6 +16,6 @@ spec:
     requests.memory: {{ default "10Gi" ((($quotas.resourceQuota).requests).memory) }}
     limits.cpu: {{ default 20 ((($quotas.resourceQuota).limits).cpu) }}
     limits.memory: {{ default "20Gi" ((($quotas.resourceQuota).limits).memory) }}
+---  
   {{- end }}
----
 {{- end }}

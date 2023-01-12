@@ -32,6 +32,6 @@ spec:
         metadata:
           labels:
             tenant: {{ $name }}
+---  
   {{- end }}
----
 {{- end }}

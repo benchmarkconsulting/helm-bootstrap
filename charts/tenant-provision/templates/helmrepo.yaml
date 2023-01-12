@@ -12,6 +12,6 @@ metadata:
 spec:
   interval: 1m
   url: https://artifactory.platform.manulife.io/artifactory/helm
+---  
   {{- end }}
----
 {{- end }}

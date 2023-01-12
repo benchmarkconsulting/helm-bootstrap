@@ -23,6 +23,6 @@ subjects:
   - name: flux-sa
     namespace: {{ $name }}
     kind: ServiceAccount
+---  
   {{- end }}
----
 {{- end }}

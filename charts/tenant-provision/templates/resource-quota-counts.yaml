@@ -18,6 +18,6 @@ spec:
     replicationcontrollers: {{ default 100 (($quotas.quotaCounts).replicationcontrollers) }}
     secrets: {{ default 100 (($quotas.quotaCounts).secrets) }}
     services: {{ default 100 (($quotas.quotaCounts).services) }}
+---  
   {{- end }}
----
 {{- end }}

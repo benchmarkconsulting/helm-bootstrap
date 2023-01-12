@@ -32,6 +32,6 @@ spec:
     kind: GitRepository
     name: {{ $name }}
     namespace: {{ $name }}
-  {{- end }}
 ---
+  {{- end }}
 {{- end }}
